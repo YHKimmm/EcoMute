@@ -1,11 +1,16 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import { decode } from "@googlemaps/polyline-codec";
+
 import {
   GoogleMap,
   Marker,
   DirectionsRenderer,
   Circle,
   MarkerClusterer,
+  DirectionsService,
+  Polyline,
 } from "@react-google-maps/api";
+
 import Places from "./Place";
 import { generatePlaces } from "@/utilities/generatePlaces";
 
@@ -19,6 +24,9 @@ const Map = () => {
   const [currentLocation, setCurrentLocation] = useState<LatLngLiteral>();
   const [startPlace, setStartPlace] = useState<LatLngLiteral>();
   const [endPlace, setEndPlace] = useState<LatLngLiteral>();
+  const [routeLine, setRouteLine] = useState<LatLngLiteral[]>();
+  const [directions, setDirections] = useState<DirectionsResult>();
+  const [travelMode, setTravelMode] = useState(google.maps.TravelMode.DRIVING);
 
   console.log("place", startPlace, endPlace);
 
@@ -64,6 +72,11 @@ const Map = () => {
             setEndPlace(position);
             mapRef.current?.panTo(position);
           }}
+          travelMode={travelMode as google.maps.TravelMode}
+          setTravelMode={(mode) => {
+            setTravelMode(mode);
+          }}
+
         />
       </div>
       {/* Google Map */}
@@ -73,6 +86,7 @@ const Map = () => {
         mapContainerClassName="map-container"
         options={options}
         onLoad={onLoad}
+        
       >
         {/* Marker */}
         {startPlace && (
@@ -80,6 +94,10 @@ const Map = () => {
             <Marker
               position={startPlace}
               icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+              title="Starting Point"
+              onClick={() => {
+                console.log("clicked");
+              }}
             />
             {/* <div>
               {generatedPlaces.map((place, idx) => (
@@ -93,9 +111,34 @@ const Map = () => {
           <Marker
             position={endPlace}
             icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+            title="Destination"
           />
         )}
-        
+        {/* Directions */}
+        {startPlace && endPlace && (
+          <DirectionsService
+
+            options={{
+              destination: endPlace,
+              origin: startPlace,
+              travelMode: travelMode as google.maps.TravelMode,
+            }}
+            callback={(response) => {
+              console.log("directions service", response);
+              // console.log(decode(response?.routes[0].overview_polyline!));
+              try {
+                const decodedPolyline = decode(response?.routes[0].overview_polyline!);
+                const routeLine = decodedPolyline.map((coord) => ({ lat: coord[0], lng: coord[1] }));
+                setRouteLine(routeLine);
+              } catch (error) {
+                console.log(error);
+              }
+            }}
+          />
+        )}
+        {routeLine && (
+           <Polyline path={routeLine} options={{ strokeColor: "#FF0000" }} />
+        )}
       </GoogleMap>
     </div>
   );
