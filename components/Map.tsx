@@ -55,7 +55,7 @@ const Map = () => {
         },
         (response, status) => {
           if (status === "OK") {
-            console.log("SHould be empty",routeLine)
+            console.log("Should be empty",routeLine)
             setDirections(response!);
             console.log("response", directions);
             const decodedPolyline = decode(response?.routes[0].overview_polyline!);
@@ -80,6 +80,44 @@ const Map = () => {
     }),
     []
   );
+
+  const getDirections = (startPlace: LatLngLiteral, endPlace: LatLngLiteral, travelMode: google.maps.TravelMode): Promise<DirectionsResult> => {
+    return new Promise((resolve, reject) => {
+      const directionsService = new google.maps.DirectionsService();
+      directionsService.route(
+        {
+          origin: startPlace,
+          destination: endPlace,
+          travelMode,
+        },
+        (response, status) => {
+          if (status === "OK") {
+            const decodedPolyline = decode(response?.routes[0].overview_polyline!);
+            const mappedRouteline = decodedPolyline.map((coord) => ({ lat: coord[0], lng: coord[1] }));
+            setRouteLine(mappedRouteline);
+
+            resolve(response as DirectionsResult);
+          } else {
+            reject(`Directions request failed due to ${status}`);
+          }
+        }
+      );
+    });
+  }
+
+  const drawPolyLine = (routeLine: LatLngLiteral[]) => {
+    return (
+      <Polyline
+        path={routeLine}
+        options={{
+          strokeColor: "#FF0000",
+          strokeOpacity: 1.0,
+          strokeWeight: 2,
+        }}
+      />
+    );
+  }
+
   
 
   const onLoad = useCallback((map: any) => (mapRef.current = map), []);
@@ -113,11 +151,9 @@ const Map = () => {
         mapContainerClassName="map-container"
         options={options}
         onLoad={onLoad}
-        
       >
         {/* Marker */}
         {startPlace && (
-          <>
             <Marker
               position={startPlace}
               icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
@@ -126,13 +162,8 @@ const Map = () => {
                 console.log("clicked");
               }}
             />
-            {/* <div>
-              {generatedPlaces.map((place, idx) => (
-                <Marker key={idx} position={place} />
-              ))}
-            </div> */}
-          </>
         )}
+
         {/* Marker */}
         {endPlace && (
           <Marker
@@ -140,34 +171,17 @@ const Map = () => {
             icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
             title="Destination"
           />
-        )}
+        )};
+    
         {/* Directions */}
-        {startPlace && endPlace && (
-          <DirectionsService
-
-            options={{
-              destination: endPlace,
-              origin: startPlace,
-              travelMode: travelMode as google.maps.TravelMode,
-            }}
-            callback={(response) => {
-              console.log("directions service", response);
-              setDirections(response!);
-              console.log("directions service", directions);
-              // console.log(decode(response?.routes[0].overview_polyline!));
-              try {
-                const decodedPolyline = decode(response?.routes[0].overview_polyline!);
-                const routeLine = decodedPolyline.map((coord) => ({ lat: coord[0], lng: coord[1] }));
-                setRouteLine(routeLine);
-              } catch (error) {
-                console.log(error);
-              }
-            }}
-          />
-        )}
+        {/* {startPlace && endPlace  && (
+          getDirections(startPlace, endPlace, travelMode as google.maps.TravelMode)
+        )};
         {routeLine && (
-           <Polyline path={routeLine} options={{ strokeColor: "#FF0000" }} />
-        )}
+          drawPolyLine(routeLine)
+        )}; */}
+        {directions && <DirectionsRenderer directions={directions} />}
+        
       </GoogleMap>
     </div>
   );
