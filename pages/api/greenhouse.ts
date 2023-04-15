@@ -3,30 +3,32 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
   emission:
-    | number
+    | any
     | {
-        value: number;
-        type: string;
-        measurement: string;
-      }
-    | undefined;
+        c02GramsPerMile: number;
+        c02GramsTotal: number;
+        gasType: string;
+      };
 };
 
 // calculates greenhouse gases emissions
 // based on the type and the amount of gas used when driving
-const calculateEmission = (gallons: string, type: string) => {
-  switch (type) {
+const calculateEmission = (mpg: number, gasType: string, distance: number) => {
+  let c02PerMile: number = 0;
+  switch (gasType) {
     case "gasoline":
+      c02PerMile = Math.ceil(8887 / mpg);
       return {
-        value: 8887 * Number(gallons),
-        type: "CO2",
-        measurement: "grams",
+        c02GramsPerMile: c02PerMile,
+        c02GramsTotal: c02PerMile * distance,
+        gasType: "Gasoline",
       };
     case "diesel":
+      c02PerMile = Math.ceil(10180 / mpg);
       return {
-        value: 10180 * Number(gallons),
-        type: "C02",
-        measurement: "grams",
+        c02GramsPerMile: c02PerMile,
+        c02GramsTotal: c02PerMile * distance,
+        gasType: "Diesel",
       };
     default:
       break;
@@ -38,9 +40,9 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method === "POST") {
-    const { gallons, type } = req.body;
+    const { distance, mpg, gasType } = req.body;
 
-    const results = calculateEmission(gallons, type);
+    const results = calculateEmission(mpg, gasType, distance);
     console.log(results);
 
     res.status(200).json({ emission: results });
