@@ -7,6 +7,8 @@ interface PlacesProps {
   setStartPlace: (place: google.maps.LatLngLiteral) => void;
   endPlace: google.maps.LatLngLiteral | undefined;
   setEndPlace: (place: google.maps.LatLngLiteral) => void;
+  travelMode: google.maps.TravelMode;
+  setTravelMode: (mode: google.maps.TravelMode) => void;
 }
 
 const Places = ({
@@ -14,18 +16,26 @@ const Places = ({
   setStartPlace,
   endPlace,
   setEndPlace,
+  travelMode,
+  setTravelMode,
 }: PlacesProps) => {
+
   const [startAutocomplete, setStartAutocomplete] =
     useState<google.maps.places.Autocomplete>();
   const [endAutocomplete, setEndAutocomplete] =
     useState<google.maps.places.Autocomplete>();
 
+  // const [travelMode, setTravelMode] = useState<
+  //   "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT"
+  // >("DRIVING");
 
-  const [travelMode, setTravelMode] = useState<"DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT">("DRIVING");
-
-const handleTravelModeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  setTravelMode(event.target.value as "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT");
-};
+  const handleTravelModeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setTravelMode(
+      event.target.value as "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT" as google.maps.TravelMode
+    );
+  };
 
   const handleStartPlaceSelect = () => {
     const getPlace = startAutocomplete?.getPlace();
@@ -98,10 +108,18 @@ const handleTravelModeChange = (event: React.ChangeEvent<HTMLSelectElement>) => 
           onChange={handleTravelModeChange}
           className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900"
         >
-          <option className="bg-slate-900" value="DRIVING">Driving</option>
-          <option className="bg-slate-900" value="WALKING">Walking</option>
-          <option className="bg-slate-900" value="BICYCLING">Bicycling</option>
-          <option className="bg-slate-900" value="TRANSIT">Transit</option>
+          <option className="bg-slate-900" value="DRIVING">
+            Driving
+          </option>
+          <option className="bg-slate-900" value="WALKING">
+            Walking
+          </option>
+          <option className="bg-slate-900" value="BICYCLING">
+            Bicycling
+          </option>
+          <option className="bg-slate-900" value="TRANSIT">
+            Transit
+          </option>
         </select>
       </div>
 
