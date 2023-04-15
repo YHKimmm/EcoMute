@@ -171,80 +171,82 @@ const Map = () => {
   const onLoad = useCallback((map: any) => (mapRef.current = map), []);
 
   return (
-    <div className="flex min-h-screen">
-      {/* Place section including input box */}
-      <div className="w-[40%] md:w-2/5 bg-slate-800">
-        <Places
-          startPlace={startPlace}
-          setStartPlace={(position) => {
-            setStartPlace(position);
-            mapRef.current?.panTo(position);
-          }}
-          endPlace={endPlace}
-          setEndPlace={(position) => {
-            setEndPlace(position);
-            mapRef.current?.panTo(position);
-          }}
-          travelMode={travelMode as google.maps.TravelMode}
-          setTravelMode={(mode) => {
-            setTravelMode(mode);
-          }}
-        />
-        {directions && (
-          <Distance
-            leg={directions.routes[0].legs[0]}
-            travelMode={travelMode}
-          />
-        )}
-      </div>
-      {/* Google Map */}
-      <GoogleMap
-        zoom={10}
-        center={center}
-        mapContainerClassName="map-container"
-        options={options}
-        onLoad={onLoad}
-      >
-        {/* Marker */}
-        {startPlace && (
-          <Marker
-            position={startPlace}
-            icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-            title="Starting Point"
-            onClick={() => {
-              console.log("clicked");
+    <>
+      <div className="flex min-h-screen">
+        {/* Place section including input box */}
+        <div className="w-[40%] md:w-2/5 bg-slate-800">
+          <Places
+            startPlace={startPlace}
+            setStartPlace={(position) => {
+              setStartPlace(position);
+              mapRef.current?.panTo(position);
+            }}
+            endPlace={endPlace}
+            setEndPlace={(position) => {
+              setEndPlace(position);
+              mapRef.current?.panTo(position);
+            }}
+            travelMode={travelMode as google.maps.TravelMode}
+            setTravelMode={(mode) => {
+              setTravelMode(mode);
             }}
           />
-        )}
-        {/* Marker */}
-        {endPlace && (
-          <Marker
-            position={endPlace}
-            icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-            title="Destination"
-          />
-        )}
-        ;{/* Directions */}
-        {/* {startPlace && endPlace  && (
+          {directions && (
+            <Distance
+              leg={directions.routes[0].legs[0]}
+              travelMode={travelMode}
+            />
+          )}
+        </div>
+        {/* Google Map */}
+        <GoogleMap
+          zoom={10}
+          center={center}
+          mapContainerClassName="map-container"
+          options={options}
+          onLoad={onLoad}
+        >
+          {/* Marker */}
+          {startPlace && (
+            <Marker
+              position={startPlace}
+              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+              title="Starting Point"
+              onClick={() => {
+                console.log("clicked");
+              }}
+            />
+          )}
+          {/* Marker */}
+          {endPlace && (
+            <Marker
+              position={endPlace}
+              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+              title="Destination"
+            />
+          )}
+          ;{/* Directions */}
+          {/* {startPlace && endPlace  && (
           getDirections(startPlace, endPlace, travelMode as google.maps.TravelMode)
         )};
         {routeLine && (
           drawPolyLine(routeLine)
         )}; */}
-        {directions && (
-          <DirectionsRenderer
-            directions={directions}
-            options={{
-              polylineOptions: {
-                strokeColor: "#1976D2",
-                zIndex: 50,
-                strokeWeight: 5,
-              },
-            }}
-          />
-        )}
-      </GoogleMap>
-    </div>
+          {directions && (
+            <DirectionsRenderer
+              directions={directions}
+              options={{
+                polylineOptions: {
+                  strokeColor: "#1976D2",
+                  zIndex: 50,
+                  strokeWeight: 5,
+                },
+              }}
+            />
+          )}
+        </GoogleMap>
+      </div>
+    </>
   );
 };
 
