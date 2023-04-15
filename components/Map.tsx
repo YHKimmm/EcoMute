@@ -8,6 +8,7 @@ import {
 } from "@react-google-maps/api";
 import Places from "./Place";
 import { generatePlaces } from "@/utilities/generatePlaces";
+import Header from "@/components/Header";
 
 // useful types which belong to google.maps
 type LatLngLiteral = google.maps.LatLngLiteral;
@@ -50,7 +51,7 @@ const Map = () => {
   const onLoad = useCallback((map: any) => (mapRef.current = map), []);
 
   return (
-    <div className="flex min-h-screen">
+    <><div className="flex min-h-screen">
       {/* Place section including input box */}
       <div className="w-[40%] md:w-1/4 bg-slate-800">
         <Places
@@ -58,13 +59,12 @@ const Map = () => {
           setStartPlace={(position) => {
             setStartPlace(position);
             mapRef.current?.panTo(position);
-          }}
+          } }
           endPlace={endPlace}
           setEndPlace={(position) => {
             setEndPlace(position);
             mapRef.current?.panTo(position);
-          }}
-        />
+          } } />
       </div>
       {/* Google Map */}
       <GoogleMap
@@ -79,8 +79,7 @@ const Map = () => {
           <>
             <Marker
               position={startPlace}
-              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-            />
+              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png" />
             {/* <div>
               {generatedPlaces.map((place, idx) => (
                 <Marker key={idx} position={place} />
@@ -92,12 +91,11 @@ const Map = () => {
         {endPlace && (
           <Marker
             position={endPlace}
-            icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-          />
+            icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png" />
         )}
-        
+
       </GoogleMap>
-    </div>
+    </div></>
   );
 };
 

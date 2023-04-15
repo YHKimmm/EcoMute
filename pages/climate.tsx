@@ -2,6 +2,7 @@
 import React from "react";
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "@/components/Map";
+import Header from "@/components/Header";
 
 type googleMapsApiKey = string;
 
