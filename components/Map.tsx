@@ -26,7 +26,7 @@ const Map = () => {
   const [endPlace, setEndPlace] = useState<LatLngLiteral>();
   const [routeLine, setRouteLine] = useState<LatLngLiteral[]>();
   const [directions, setDirections] = useState<DirectionsResult>();
-  const [travelMode, setTravelMode] = useState(google.maps.TravelMode.DRIVING);
+  const [travelMode, setTravelMode] = useState<"DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT">("DRIVING");
 
   console.log("place", startPlace, endPlace);
 
@@ -45,7 +45,33 @@ const Map = () => {
         }
       );
     }
-  }, []);
+    if (startPlace && endPlace) {
+      const directionsService = new google.maps.DirectionsService();
+      directionsService.route(
+        {
+          origin: startPlace,
+          destination: endPlace,
+          travelMode: travelMode as google.maps.TravelMode,
+        },
+        (response, status) => {
+          if (status === "OK") {
+            console.log("SHould be empty",routeLine)
+            setDirections(response!);
+            console.log("response", directions);
+            const decodedPolyline = decode(response?.routes[0].overview_polyline!);
+            const newRouteLine = decodedPolyline.map((coord) => ({
+              lat: coord[0],
+              lng: coord[1],
+            }));
+            
+            setRouteLine(newRouteLine);
+          } else {
+            console.error(`Directions request failed due to ${status}`);
+          }
+        }
+      );
+    }
+  }, [travelMode, startPlace, endPlace]);
   const center = useMemo(() => currentLocation, [currentLocation]);
 
   const options = useMemo<MapOptions>(
@@ -54,6 +80,7 @@ const Map = () => {
     }),
     []
   );
+  
 
   const onLoad = useCallback((map: any) => (mapRef.current = map), []);
 
@@ -125,6 +152,8 @@ const Map = () => {
             }}
             callback={(response) => {
               console.log("directions service", response);
+              setDirections(response!);
+              console.log("directions service", directions);
               // console.log(decode(response?.routes[0].overview_polyline!));
               try {
                 const decodedPolyline = decode(response?.routes[0].overview_polyline!);
