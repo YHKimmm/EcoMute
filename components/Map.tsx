@@ -6,7 +6,7 @@ import {
   Circle,
   MarkerClusterer,
 } from "@react-google-maps/api";
-import Place from "./Place";
+import Places from "./Place";
 import { generatePlaces } from "@/utilities/generatePlaces";
 
 // useful types which belong to google.maps
@@ -17,13 +17,14 @@ type MapOptions = google.maps.MapOptions;
 const Map = () => {
   const mapRef = useRef<GoogleMap>();
   const [currentLocation, setCurrentLocation] = useState<LatLngLiteral>();
-  const [place, setPlace] = useState<LatLngLiteral>();
+  const [startPlace, setStartPlace] = useState<LatLngLiteral>();
+  const [endPlace, setEndPlace] = useState<LatLngLiteral>();
 
-  console.log("place", place);
+  console.log("place", startPlace, endPlace);
 
-  const generatedPlaces = useMemo(() => {
-    return generatePlaces(place);
-  }, [place]);
+  // const generatedPlaces = useMemo(() => {
+  //   return generatePlaces(place);
+  // }, [place]);
 
   // get current location of user
   useEffect(() => {
@@ -52,10 +53,15 @@ const Map = () => {
     <div className="flex min-h-screen">
       {/* Place section including input box */}
       <div className="w-[40%] md:w-1/4 bg-slate-800">
-        <Place
-          place={place}
-          setPlace={(position) => {
-            setPlace(position);
+        <Places
+          startPlace={startPlace}
+          setStartPlace={(position) => {
+            setStartPlace(position);
+            mapRef.current?.panTo(position);
+          }}
+          endPlace={endPlace}
+          setEndPlace={(position) => {
+            setEndPlace(position);
             mapRef.current?.panTo(position);
           }}
         />
@@ -69,19 +75,27 @@ const Map = () => {
         onLoad={onLoad}
       >
         {/* Marker */}
-        {place && (
+        {startPlace && (
           <>
             <Marker
-              position={place}
+              position={startPlace}
               icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
             />
-            <div>
+            {/* <div>
               {generatedPlaces.map((place, idx) => (
                 <Marker key={idx} position={place} />
               ))}
-            </div>
+            </div> */}
           </>
         )}
+        {/* Marker */}
+        {endPlace && (
+          <Marker
+            position={endPlace}
+            icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+          />
+        )}
+        
       </GoogleMap>
     </div>
   );
