@@ -5,7 +5,7 @@ import Map from "@/components/Map";
 
 type googleMapsApiKey = string;
 
-const climate = () => {
+const Climate = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env
@@ -19,4 +19,4 @@ const climate = () => {
   return <Map />;
 };
 
-export default climate;
+export default Climate;
