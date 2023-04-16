@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import styles from '../styles/Home.module.css'
 export default function Main() {
   return (
     <section className="text-gray-600 body-font">
       <div className="max-w-5xl pt-52 pb-24 mx-auto">
-        <h1 className="text-80 text-center font-4 lh-6 ld-04 font-bold text-white mb-6">
-          ECOMUTE
-        </h1>
-        <h2 className="text-2xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-700 text-center">
+      <h1 className='text-80 text-center font-4 lh-6 ld-04 font-bold text-white mb-6' >
+        ECOMUTE
+      </h1>
+        <h2 className="text-2xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-400 text-center">
           Do you know how much you are contributing to the environment?
           <br />
           Find out with EcoMute.
@@ -34,7 +34,7 @@ export default function Main() {
       </div>
       <div className="container flex flex-col items-center justify-center mx-auto">
         <Image
-          src="/carbon-emission.jpg"
+          src="/carbon-one-world.jpg"
           className="object-cover object-center w-3/4 mb-10 border shadow-md rounded-lg"
           alt="carbon emission image"
           width="1400"

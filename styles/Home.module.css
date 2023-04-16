@@ -14,21 +14,4 @@
     font-size: 5xl; /* or any other value you prefer */
   }
   
-  @media screen and (min-width: 768px) {
-    .text-container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .text-custom-heading {
-      font-size: 12rem; /* or any other value you prefer */
-      margin-right: 3rem; /* or any other value you prefer */
-    }
-  
-    .text-custom-paragraph {
-      font-size: 3xl; /* or any other value you prefer */
-    }
-  }
-  
+ 
