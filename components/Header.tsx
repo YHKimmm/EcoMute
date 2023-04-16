@@ -51,32 +51,25 @@ export default function Header() {
             >
               Home
             </Link>
-            <div className="relative">
-              <button
-                type="button"
-                className="group rounded-md text-gray-300 inline-flex items-center text-base hover:text-white font-semibold focus:outline-none pb-8'"
-              >
-                <a className="" href="/climate">
-                  Your Emissions
-                </a>
-              </button>
-            </div>
+
+            <Link
+              className="mr-11 pr-2 cursor-pointer text-gray-300 hover:text-white font-semibold "
+              href={"/climate"}
+            >
+              Your Emissions
+            </Link>
             <Link
               className="mr-12 md:ml-11 ml-0 cursor-pointer text-gray-300 hover:text-white font-semibold "
               href="/about"
             >
               About
             </Link>
-            <div className="relative">
-              <button
-                type="button"
-                className="group rounded-md text-gray-300 inline-flex items-center text-base font-medium hover:text-white font-semibold focus:outline-none pb-8'"
-              >
-                <a className="" href="/news">
-                  Learn To Help
-                </a>
-              </button>
-            </div>
+            <Link
+              className="mr-12 md:ml-11 ml-0 cursor-pointer text-gray-300 hover:text-white font-semibold "
+              href="/news"
+            >
+              Learn To Help
+            </Link>
           </div>
           <Link
             data-v-54e46119=""
