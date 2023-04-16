@@ -117,7 +117,7 @@ const Map = () => {
                 directions={directions}
                 options={{
                   polylineOptions: {
-                    strokeColor: "#1976D2",
+                    strokeColor: "#FF0000",
                     zIndex: 50,
                     strokeWeight: 5,
                   },
