@@ -1,10 +1,12 @@
 import carbon_emission from "../public/images/carbon-emission.jpeg";
 import Image from "next/image";
+import Layout from "./layout/Layout";
 
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 export default function Main() {
     return (
+        <Layout>
       <section className="text-gray-600 body-font">
         <div className="max-w-5xl pt-52 pb-24 mx-auto">
           <h1 className="text-80 text-center font-4 lh-6 ld-04 font-bold text-white mb-6">
@@ -142,5 +144,6 @@ export default function Main() {
           </div>
         </section>
       </section>
+      </Layout>
     );
   }
