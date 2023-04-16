@@ -10,7 +10,7 @@ const About = () => {
       <Layout>
         <section className="text-gray-600 body-font ">
           <div className="max-w-5xl pt-5 pb-5 mx-auto">
-            <h1 className="text-80 text-center font-4 lh-6 ld-04 font-bold text-white mb-6">
+            <h1 className="text-80 text-center font-4  font-bold text-white mb-6 mt-24">
               About Us
             </h1>
             <div className="container flex flex-col items-center justify-center mx-auto">
@@ -26,7 +26,7 @@ const About = () => {
               environment. We believe that every person has a role to play in
               preserving our planet for future generations.
             </p>
-            <div className="pt-12 pb-24 max-w-4xl mx-auto fsac4 md:px-1 px-3">
+            <div className="pt-12 pb-5 max-w-4xl mx-auto fsac4 md:px-1 px-3">
               <div className="bg-gray-900 p-8 rounded-lg">
                 <h3 className="pt-3 font-semibold text-lg text-white">
                   Our Mission
@@ -37,11 +37,10 @@ const About = () => {
                   environment. We aim to create a more sustainable future for
                   all by providing education, tools, and resources that inspire
                   and enable action.
-                  <br />
-                  <p className="my-2">
-                    This is a global issue that requires a global solution. We
-                    believe that by working together, we can make a difference.
-                  </p>
+                </p>
+                <p className="pt-2 value-text text-md text-gray-200 fkrr1">
+                  This is a global issue that requires a global solution. We
+                  believe that by working together, we can make a difference.
                 </p>
               </div>
               <div className="bg-gray-900 p-8 rounded-lg">
@@ -79,27 +78,47 @@ const About = () => {
                   If you have any questions, comments, or suggestions, please
                   don&apos;t hesitate to get in touch. You can reach us by email
                   here:
+                  <br />
+                  <br />
                   <Link href="mailto:ecomutebcit@gmail.com?subject=Inquiry&body=Hello, I have a question about EcoMute.">
-                    <p className="my-5">ecomutebcit@gmail.com</p>
+                    <span>ecomutebcit@gmail.com</span>
                   </Link>
+                  <br />
+                  <br />
                   We look forward to hearing from you!
                 </p>
               </div>
             </div>
           </div>
-          <div className="max-w-lg py-6 px-4 bg-gray-900 rounded-lg shadow-md text-center mx-auto">
-            <h3 className="pt-3 font-semibold text-lg text-green-500">
-              How Are Emission Values Calculated?
-            </h3>
-            <p className="pt-2 value-text text-md text-gray-300">
-              EcoMute calculates estimated emissions based on various factors,
-              including distance, transportation mode, and fuel type. Our data
-              is sourced from reputable organizations and databases, such as the
-              United States Environmental Protection Agency and the
-              International Energy Agency. However, please note that these
-              values are estimates and may not be entirely accurate for your
-              specific situation.
-            </p>
+          <div className="relative">
+            <img
+              src="/forest.jpg"
+              alt="Background Image"
+              className="absolute inset-0 h-full w-full object-cover z-0"
+            />
+           <div className="max-w-lg py-6 px-4 mb-[15rem] bg-gray-900 opacity-[.90] rounded-lg shadow-md text-left mx-auto relative z-10">
+              <h3 className="pt-3 font-semibold text-lg text-green-500">
+                How Are Emission Values Calculated?
+              </h3>
+              <p className="pt-2 value-text text-md text-gray-300">
+                EcoMute calculates estimated emissions based on various factors,
+                including distance, transportation mode, and fuel type. Our data
+                is sourced from reputable organizations and databases, such as
+                the United States Environmental Protection Agency and the
+                International Energy Agency. To estimate the emissions, we use
+                the CO2 emissions from a gallon of gasoline (8,887 grams
+                CO2/gallon) or diesel (10,180 grams CO2/gallon), along with the
+                distance of the commute and the mileage of the vehicle. However,
+                please note that these values are estimates and may not be
+                entirely accurate for your specific situation.
+              </p>
+              <p className="pt-2 value-text text-md text-gray-300">
+                Please note that the intent of this estimation is to provide a
+                rough estimate for educational and awareness purposes to help
+                individuals better visualize the amount of CO2 emissions from
+                their daily commutes.
+              </p>
+            </div>
           </div>
         </section>
       </Layout>

@@ -1,34 +1,34 @@
 import React, { useState } from "react";
 import { Autocomplete } from "@react-google-maps/api";
 import { BiSearch } from "react-icons/bi";
+import Image from "next/image";
 
 interface PlacesProps {
-  startPlace: google.maps.LatLngLiteral | undefined;
   setStartPlace: (place: google.maps.LatLngLiteral) => void;
-  endPlace: google.maps.LatLngLiteral | undefined;
   setEndPlace: (place: google.maps.LatLngLiteral) => void;
   travelMode: google.maps.TravelMode;
   setTravelMode: (mode: google.maps.TravelMode) => void;
+  mpg: number;
+  setMpg: (mpg: number) => void;
+  gasType: string;
+  setGasType: (gasType: string) => void;
 }
 
 const Places = ({
-  startPlace,
   setStartPlace,
-  endPlace,
   setEndPlace,
   travelMode,
   setTravelMode,
+  mpg,
+  setMpg,
+  gasType,
+  setGasType,
 }: PlacesProps) => {
   const [startAutocomplete, setStartAutocomplete] =
     useState<google.maps.places.Autocomplete>();
   const [endAutocomplete, setEndAutocomplete] =
     useState<google.maps.places.Autocomplete>();
-  const [mpg, setMpg] = useState<string>("22");
-  const [gasType, setGasType] = useState<string>("");
-
-  // const [travelMode, setTravelMode] = useState<
-  //   "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT"
-  // >("DRIVING");
+  const [isOpen, setIsOpen] = useState<Boolean>(false);
 
   const handleTravelModeChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -67,111 +67,128 @@ const Places = ({
   };
 
   return (
-    <div className="flex flex-col p-3 md:p-5">
-      <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
-        Starting Point
-      </h1>
-      <div className="flex items-center w-full h-12 px-4 bg-slate-900 rounded-md">
-        <BiSearch className="text-sm md:text-xl text-slate-300" />
-        <Autocomplete
-          onLoad={onStartLoad}
-          onPlaceChanged={handleStartPlaceSelect}
-        >
-          <input
-            type="text"
-            placeholder="Enter Starting Point"
-            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-slate-100 placeholder-slate-300"
-          />
-        </Autocomplete>
+    <div className="relative mt-5">
+      <div
+        className="flex flex-row justify-between items-center py-2 px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 mx-auto border-y-[1px] border-slate-500 text-white text-2xl font-semibold "
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <p>Configure Location</p>
+        <Image
+          src="/dropdown.png"
+          className={isOpen ? "rotate-180 transition-all" : "transition-all"}
+          alt="carbon emission image"
+          width="50"
+          height="50"
+        />
       </div>
-
-      <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5 mt-5">
-        Destination
-      </h1>
-      <div className="flex items-center w-full h-12 px-4 bg-slate-900 rounded-md">
-        <BiSearch className="text-sm md:text-xl text-slate-300" />
-        <Autocomplete onLoad={onEndLoad} onPlaceChanged={handleEndPlaceSelect}>
-          <input
-            type="text"
-            placeholder="Enter Destination"
-            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-slate-100 placeholder-slate-300"
-          />
-        </Autocomplete>
-      </div>
-
-      {/* Add select element for travel mode */}
-      <div>
-        <label
-          htmlFor="travel-mode-select"
-          className="block my-5 text-sm md:text-2xl font-bold text-slate-100"
-        >
-          Travel Mode:
-        </label>
-        <select
-          id="travel-mode-select"
-          value={travelMode}
-          onChange={handleTravelModeChange}
-          className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
-        >
-          <option className="bg-slate-900" value="DRIVING">
-            Driving
-          </option>
-          <option className="bg-slate-900" value="WALKING">
-            Walking
-          </option>
-          <option className="bg-slate-900" value="BICYCLING">
-            Bicycling
-          </option>
-          <option className="bg-slate-900" value="TRANSIT">
-            Transit
-          </option>
-        </select>
-        {travelMode === "DRIVING" ? (
-          <>
-            <label className="block my-5 text-sm md:text-2xl font-bold text-slate-100">
-              Miles per Gallon
-            </label>
+      <div
+        className={
+          isOpen
+            ? "flex flex-col px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 absolute left-1/2 translate-x-[-50%] -top-[500px] opacity-0 transition-all ease-in-out"
+            : "flex flex-col px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 absolute left-1/2 translate-x-[-50%] top-[5rem] ease-in-out transition-all"
+        }
+      >
+        <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-2 md:mb-5">
+          Starting Point
+        </h1>
+        <div className="flex items-center w-full h-12 px-4 bg-white text-black rounded-md">
+          <BiSearch className="text-sm md:text-xl text-black" />
+          <Autocomplete
+            onLoad={onStartLoad}
+            onPlaceChanged={handleStartPlaceSelect}
+          >
             <input
-              className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
-              type="number"
-              value={mpg}
-              onChange={(e) => {
-                setMpg(e.target.value);
-              }}
+              type="text"
+              placeholder="Enter Starting Point"
+              className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
             />
-            <label className="block my-5 text-sm md:text-2xl font-bold text-slate-100">
-              Gas Type
-            </label>
-            <select
-              value={gasType}
-              onChange={(e) => {
-                setGasType(e.target.value);
-              }}
-              className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
-            >
-              <option className="bg-slate-900" value="gasoline">
-                Gasoline
-              </option>
-              <option className="bg-slate-900" value="diesel">
-                Diesel
-              </option>
-            </select>
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
+          </Autocomplete>
+        </div>
 
-      {/* {!startPlace && (
-        <p className="text-xs md:text-base text-slate-100 mt-5">
-          Please enter a starting point to get started.
-        </p>
-      )}
-      {!endPlace && (
-      <p className="text-xs md:text-base text-slate-100 mt-5">
-      Please enter a destination to get started.
-      </p>
-      )} */}
+        <h1 className="text-sm md:text-2xl font-bold text-slate-100 my-2 md:my-5">
+          Destination
+        </h1>
+        <div className="flex items-center w-full h-12 px-4 bg-white rounded-md">
+          <BiSearch className="text-sm md:text-xl text-black" />
+          <Autocomplete
+            onLoad={onEndLoad}
+            onPlaceChanged={handleEndPlaceSelect}
+          >
+            <input
+              type="text"
+              placeholder="Enter Destination"
+              className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
+            />
+          </Autocomplete>
+        </div>
+
+        {/* Add select element for travel mode */}
+        <div>
+          <label
+            htmlFor="travel-mode-select"
+            className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white"
+          >
+            Travel Mode:
+          </label>
+          <select
+            id="travel-mode-select"
+            value={travelMode}
+            onChange={handleTravelModeChange}
+            className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
+          >
+            <option className="bg-white" value="DRIVING">
+              Driving
+            </option>
+            <option className="bg-white" value="WALKING">
+              Walking
+            </option>
+            <option className="bg-white" value="BICYCLING">
+              Bicycling
+            </option>
+            <option className="bg-white" value="TRANSIT">
+              Transit
+            </option>
+          </select>
+          {travelMode === "DRIVING" ? (
+            <div className="flex flex-col md:flex-row">
+              <div className="basis-1/2 md:mr-1">
+                <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white">
+                  Miles per Gallon
+                </label>
+                <input
+                  className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
+                  type="number"
+                  value={mpg}
+                  onChange={(e) => {
+                    setMpg(Number(e.target.value));
+                  }}
+                />
+              </div>
+              <div className="basis-1/2 md:ml-1">
+                <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white">
+                  Gas Type
+                </label>
+                <select
+                  value={gasType}
+                  onChange={(e) => {
+                    setGasType(e.target.value);
+                  }}
+                  className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
+                >
+                  <option className="bg-white" value="gasoline">
+                    Gasoline
+                  </option>
+                  <option className="bg-white" value="diesel">
+                    Diesel
+                  </option>
+                </select>
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

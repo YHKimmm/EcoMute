@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
-import { decode } from "@googlemaps/polyline-codec";
 import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import Places from "./Place";
 import Distance from "./Distance";
@@ -16,11 +15,12 @@ const Map = () => {
   const [currentLocation, setCurrentLocation] = useState<LatLngLiteral>();
   const [startPlace, setStartPlace] = useState<LatLngLiteral>();
   const [endPlace, setEndPlace] = useState<LatLngLiteral>();
-  const [routeLine, setRouteLine] = useState<LatLngLiteral[]>();
   const [directions, setDirections] = useState<DirectionsResult>();
   const [travelMode, setTravelMode] = useState<
     "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT"
   >("DRIVING");
+  const [mpg, setMpg] = useState<number>(0);
+  const [gasType, setGasType] = useState<string>("gasoline");
 
   console.log("place", startPlace, endPlace);
 
@@ -37,39 +37,6 @@ const Map = () => {
     }
   }, []);
 
-  useMemo(() => {
-    if (startPlace && endPlace) {
-      const directionsService = new google.maps.DirectionsService();
-      directionsService.route(
-        {
-          origin: startPlace,
-          destination: endPlace,
-          travelMode: travelMode as google.maps.TravelMode,
-
-        },
-        (response, status) => {
-          if (status === "OK" && response) {
-            console.log("Should be empty", routeLine);
-            setDirections(response);
-            console.log("response", directions);
-            const decodedPolyline = decode(
-              response?.routes[0].overview_polyline!
-            );
-            const newRouteLine = decodedPolyline.map((coord) => ({
-              lat: coord[0],
-              lng: coord[1],
-            }));
-
-            setRouteLine(newRouteLine);
-          } else {
-            console.error(`Directions request failed due to ${status}`);
-          }
-        }
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startPlace, endPlace, travelMode]);
-
   useEffect(() => {
     if (startPlace && endPlace) {
       const directionsService = new google.maps.DirectionsService();
@@ -81,18 +48,8 @@ const Map = () => {
         },
         (response, status) => {
           if (status === "OK" && response) {
-            console.log("Should be empty", routeLine);
             setDirections(response);
             console.log("directions", directions);
-            const decodedPolyline = decode(
-              response?.routes[0].overview_polyline!
-            );
-            const newRouteLine = decodedPolyline.map((coord) => ({
-              lat: coord[0],
-              lng: coord[1],
-            }));
-
-            setRouteLine(newRouteLine);
           } else {
             console.error(`Directions request failed due to ${status}`);
           }
@@ -117,23 +74,66 @@ const Map = () => {
 
   return (
     <>
-      <div className="flex h-full">
+      <div className="flex flex-col h-screen bg-slate-800">
+        {/* Go back home page */}
+        <div className="flex p-5 items-center h-16 text-white">
+          <Link href="/">
+            <BsFillArrowLeftCircleFill fontSize={30} />
+          </Link>
+        </div>
+        {/* Google Map */}
+
+        <div className="h-[40rem] w-full md:w-3/4 mx-auto z-20">
+          <GoogleMap
+            zoom={10}
+            center={center}
+            mapContainerClassName="map-container"
+            options={options}
+            onLoad={onLoad}
+          >
+            {/* Marker */}
+            {startPlace && (
+              <Marker
+                position={startPlace}
+                icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+                title="Starting Point"
+                onClick={() => {
+                  console.log("clicked");
+                }}
+              />
+            )}
+            {/* Marker */}
+            {endPlace && (
+              <Marker
+                position={endPlace}
+                icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+                title="Destination"
+              />
+            )}
+            {/* Route Line */}
+            {directions && (
+              <DirectionsRenderer
+                directions={directions}
+                options={{
+                  polylineOptions: {
+                    strokeColor: "#FF0000",
+                    zIndex: 50,
+                    strokeWeight: 5,
+                  },
+                }}
+              />
+            )}
+          </GoogleMap>
+        </div>
+
         {/* Place section including input box */}
-        <div className="w-[40%] md:w-2/5 bg-slate-800">
-          {/* Go back home page */}
-          <div className="flex p-5 items-center h-16 mt-3 text-white">
-            <Link href="/">
-              <BsFillArrowLeftCircleFill fontSize={30} />
-            </Link>
-          </div>
+        <div>
           {/* Places */}
           <Places
-            startPlace={startPlace}
             setStartPlace={(position) => {
               setStartPlace(position);
               mapRef.current?.panTo(position);
             }}
-            endPlace={endPlace}
             setEndPlace={(position) => {
               setEndPlace(position);
               mapRef.current?.panTo(position);
@@ -142,55 +142,24 @@ const Map = () => {
             setTravelMode={(mode) => {
               setTravelMode(mode);
             }}
+            mpg={mpg}
+            setMpg={(mpg: number) => {
+              setMpg(mpg);
+            }}
+            gasType={gasType}
+            setGasType={(gasType: string) => {
+              setGasType(gasType);
+            }}
           />
           {directions && (
             <Distance
               leg={directions.routes[0].legs[0]}
               travelMode={travelMode}
+              mpg={mpg}
+              gasType={gasType}
             />
           )}
         </div>
-        {/* Google Map */}
-        <GoogleMap
-          zoom={10}
-          center={center}
-          mapContainerClassName="map-container"
-          options={options}
-          onLoad={onLoad}
-        >
-          {/* Marker */}
-          {startPlace && (
-            <Marker
-              position={startPlace}
-              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-              title="Starting Point"
-              onClick={() => {
-                console.log("clicked");
-              }}
-            />
-          )}
-          {/* Marker */}
-          {endPlace && (
-            <Marker
-              position={endPlace}
-              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-              title="Destination"
-            />
-          )}
-          {/* Route Line */}
-          {directions && (
-            <DirectionsRenderer
-              directions={directions}
-              options={{
-                polylineOptions: {
-                  strokeColor: "#1976D2",
-                  zIndex: 50,
-                  strokeWeight: 5,
-                },
-              }}
-            />
-          )}
-        </GoogleMap>
       </div>
     </>
   );

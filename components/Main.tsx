@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import styles from '../styles/Home.module.css'
+import Newsletter from "./Newsletter";
 export default function Main() {
   return (
     <section className="text-gray-600 body-font">
       <div className="max-w-5xl pt-52 pb-24 mx-auto">
-        <h1 className="text-80 text-center font-4 lh-6 ld-04 font-bold text-white mb-6">
-          ECOMUTE
-        </h1>
-        <h2 className="text-2xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-700 text-center">
+      <h1 className='text-80 text-center font-4 lh-6 ld-04 font-bold text-white mb-6' >
+        ECOMUTE
+      </h1>
+        <h2 className="text-2xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-400 text-center">
           Do you know how much you are contributing to the environment?
           <br />
           Find out with EcoMute.
@@ -34,7 +35,7 @@ export default function Main() {
       </div>
       <div className="container flex flex-col items-center justify-center mx-auto">
         <Image
-          src="/carbon-emission.jpg"
+          src="/carbon-one-world.jpg"
           className="object-cover object-center w-3/4 mb-10 border shadow-md rounded-lg"
           alt="carbon emission image"
           width="1400"
@@ -145,30 +146,7 @@ export default function Main() {
           </p>
         </div>
       </div>
-      <section className="relative pb-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <div className="py-24 md:py-36">
-            <h1 className="mb-5 text-6xl font-bold text-white">
-              Subscribe to our newsletter
-            </h1>
-            <h1 className="mb-9 text-2xl font-semibold text-gray-200">
-              Enter your email address and get our newsletters straight away.
-            </h1>
-            <input
-              type="email"
-              placeholder="jack@example.com"
-              name="email"
-              className="border border-gray-600 w-1/4 pr-2 pl-2 py-3 mt-2 rounded-md text-gray-800 font-semibold hover:border-gray-700 bg-black"
-            />{" "}
-            <Link
-              className="inline-flex items-center px-14 py-3 mt-2 ml-2 font-medium text-black transition duration-500 ease-in-out transform bg-transparent border rounded-lg bg-white"
-              href="/"
-            >
-              <span className="justify-center">Subscribe</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Newsletter />
     </section>
   );
 }
