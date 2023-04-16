@@ -66,11 +66,11 @@ const Places = ({
 
   return (
     <div className="flex flex-col p-3 md:p-5">
-      <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
+      <h1 className="text-sm md:text-2xl font-bold text-white mb-5">
         Starting Point
       </h1>
-      <div className="flex items-center w-full h-12 px-4 bg-slate-900 rounded-md">
-        <BiSearch className="text-sm md:text-xl text-slate-300" />
+      <div className="flex items-center w-full h-12 px-4 bg-white text-black rounded-md">
+        <BiSearch className="text-sm md:text-xl text-black" />
         <Autocomplete
           onLoad={onStartLoad}
           onPlaceChanged={handleStartPlaceSelect}
@@ -78,21 +78,21 @@ const Places = ({
           <input
             type="text"
             placeholder="Enter Starting Point"
-            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-slate-100 placeholder-slate-300"
+            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
           />
         </Autocomplete>
       </div>
 
-      <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5 mt-5">
+      <h1 className="text-sm md:text-2xl font-bold text-white mb-5 mt-5">
         Destination
       </h1>
-      <div className="flex items-center w-full h-12 px-4 bg-slate-900 rounded-md">
-        <BiSearch className="text-sm md:text-xl text-slate-300" />
+      <div className="flex items-center w-full h-12 px-4 bg-white rounded-md">
+        <BiSearch className="text-sm md:text-xl text-black" />
         <Autocomplete onLoad={onEndLoad} onPlaceChanged={handleEndPlaceSelect}>
           <input
             type="text"
             placeholder="Enter Destination"
-            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-slate-100 placeholder-slate-300"
+            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
           />
         </Autocomplete>
       </div>
@@ -101,7 +101,7 @@ const Places = ({
       <div>
         <label
           htmlFor="travel-mode-select"
-          className="block my-5 text-sm md:text-2xl font-bold text-slate-100"
+          className="block my-5 text-sm md:text-2xl font-bold text-white"
         >
           Travel Mode:
         </label>
@@ -109,33 +109,33 @@ const Places = ({
           id="travel-mode-select"
           value={travelMode}
           onChange={handleTravelModeChange}
-          className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
+          className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
         >
-          <option className="bg-slate-900" value="DRIVING">
+          <option className="bg-white" value="DRIVING">
             Driving
           </option>
-          <option className="bg-slate-900" value="WALKING">
+          <option className="bg-white" value="WALKING">
             Walking
           </option>
-          <option className="bg-slate-900" value="BICYCLING">
+          <option className="bg-white" value="BICYCLING">
             Bicycling
           </option>
-          <option className="bg-slate-900" value="TRANSIT">
+          <option className="bg-white" value="TRANSIT">
             Transit
           </option>
         </select>
         {travelMode === "DRIVING" ? (
           <>
-            <label className="block my-5 text-sm md:text-2xl font-bold text-slate-100">
+            <label className="block my-5 text-sm md:text-2xl font-bold text-white">
               Miles per Gallon
             </label>
             <input
-              className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
+              className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
               type="text"
               value={mpg}
               onChange={(e) => setMpg(Number(e.target.value))}
             />
-            <label className="block my-5 text-sm md:text-2xl font-bold text-slate-100">
+            <label className="block my-5 text-sm md:text-2xl font-bold text-white">
               Gas Type
             </label>
             <select
@@ -143,15 +143,15 @@ const Places = ({
               onChange={(e) => {
                 setGasType(e.target.value);
               }}
-              className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
+              className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
             >
-              <option className="bg-slate-900" value="">
+              <option className="bg-white" value="">
                 Select Gas Type
               </option>
-              <option className="bg-slate-900" value="gasoline">
+              <option className="bg-white" value="gasoline">
                 Gasoline
               </option>
-              <option className="bg-slate-900" value="diesel">
+              <option className="bg-white" value="diesel">
                 Diesel
               </option>
             </select>

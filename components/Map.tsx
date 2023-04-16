@@ -76,7 +76,7 @@ const Map = () => {
     <>
       <div className="flex h-full">
         {/* Place section including input box */}
-        <div className="w-[40%] md:w-2/5 bg-slate-800">
+        <div className="w-[40%] md:w-2/5 bg-gray-900">
           {/* Go back home page */}
           <div className="flex p-5 items-center h-16 mt-3 text-white">
             <Link href="/">
