@@ -123,14 +123,10 @@ export default function Main() {
             src="/checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
-            Lorem ipsum dolor sit amet
+          Reduce water usage
           </h3>
           <p className="pt-2 value-text text-md text-gray-200 fkrr1">
-            Fusce pharetra ligula mauris, quis faucibus lectus elementum vel.
-            Nullam vehicula, libero at euismod tristique, neque ligula faucibus
-            urna, quis ultricies massa enim in nunc. Vivamus ultricies, quam ut
-            rutrum blandit, turpis massa ornare velit, in sodales tellus ex nec
-            odio.
+          Conserving water can help reduce carbon emissions by reducing the energy required to treat and transport water.
           </p>
         </div>
         <div className="ktq4">
@@ -142,14 +138,10 @@ export default function Main() {
             src="/checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
-            Lorem ipsum dolor sit amet
+          Use energy-efficient appliances
           </h3>
           <p className="pt-2 value-text text-md text-gray-200 fkrr1">
-            Fusce pharetra ligula mauris, quis faucibus lectus elementum vel.
-            Nullam vehicula, libero at euismod tristique, neque ligula faucibus
-            urna, quis ultricies massa enim in nunc. Vivamus ultricies, quam ut
-            rutrum blandit, turpis massa ornare velit, in sodales tellus ex nec
-            odio.
+          Switching to energy-efficient appliances and light bulbs can significantly reduce your energy consumption and carbon emissions.
           </p>
         </div>
       </div>
