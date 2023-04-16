@@ -4,24 +4,25 @@ interface DistanceProps {
   leg: google.maps.DirectionsLeg;
   travelMode: "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT";
   mpg: number;
+  gasType: string;
 }
 
-const Distance = ({ leg, travelMode, mpg }: DistanceProps) => {
+const Distance = ({ leg, travelMode, mpg, gasType }: DistanceProps) => {
   console.log("leg", leg);
   const [emission, setEmission] = useState<Emission>();
-  console.log({ emission, mpg });
+  console.log({ emission, mpg, gasType });
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/api/emission", {
+      const response = await fetch("/api/greenhouse", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          distance: leg.distance?.text,
+          distance: leg.distance?.value,
           mpg: mpg,
-          gasType: "gasoline", // replace with the actual gas type
+          gasType: gasType,
         }),
       });
 
@@ -29,15 +30,15 @@ const Distance = ({ leg, travelMode, mpg }: DistanceProps) => {
 
       if (response.ok) {
         const data = await response.json();
-        setEmission(data.emission);
         console.log("data from distance", data);
+        setEmission(data.emission);
       } else {
         console.error("Error fetching emission data:", response.statusText);
       }
     };
 
     fetchData();
-  }, []);
+  }, [gasType, leg.distance?.value, mpg]);
 
   return (
     <div className="p-3 md:p-5 tracking-widest">

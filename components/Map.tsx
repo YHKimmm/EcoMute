@@ -19,7 +19,8 @@ const Map = () => {
   const [travelMode, setTravelMode] = useState<
     "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT"
   >("DRIVING");
-  const [mpg, setMpg] = useState<number>(22);
+  const [mpg, setMpg] = useState<number>(0);
+  const [gasType, setGasType] = useState<string>("gasonline");
 
   console.log("place", startPlace, endPlace);
 
@@ -100,12 +101,17 @@ const Map = () => {
             setMpg={(mpg: number) => {
               setMpg(mpg);
             }}
+            gasType={gasType}
+            setGasType={(gasType: string) => {
+              setGasType(gasType);
+            }}
           />
           {directions && (
             <Distance
               leg={directions.routes[0].legs[0]}
               travelMode={travelMode}
               mpg={mpg}
+              gasType={gasType}
             />
           )}
         </div>
