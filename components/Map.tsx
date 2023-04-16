@@ -21,6 +21,7 @@ const Map = () => {
   >("DRIVING");
   const [mpg, setMpg] = useState<number>(0);
   const [gasType, setGasType] = useState<string>("gasoline");
+  const [isOpen, setIsOpen] = useState<Boolean>(false);
 
   console.log("place", startPlace, endPlace);
 
@@ -74,7 +75,7 @@ const Map = () => {
 
   return (
     <>
-      <div className="flex flex-col h-screen bg-slate-800">
+      <div className="flex flex-col min-h-screen bg-slate-800">
         {/* Go back home page */}
         <div className="flex p-5 items-center h-16 text-white">
           <Link href="/">
@@ -83,7 +84,7 @@ const Map = () => {
         </div>
         {/* Google Map */}
 
-        <div className="h-[40rem] w-full md:w-3/4 mx-auto z-20">
+        <div className="h-[45rem] w-full md:w-3/4 xl:w-3/5 mx-auto z-20">
           <GoogleMap
             zoom={10}
             center={center}
@@ -150,6 +151,10 @@ const Map = () => {
             setGasType={(gasType: string) => {
               setGasType(gasType);
             }}
+            isOpen={isOpen}
+            setIsOpen={(isOpen: Boolean) => {
+              setIsOpen(isOpen);
+            }}
           />
           {directions && (
             <Distance
@@ -157,6 +162,10 @@ const Map = () => {
               travelMode={travelMode}
               mpg={mpg}
               gasType={gasType}
+              isOpen={isOpen}
+              setIsOpen={(isOpen: Boolean) => {
+                setIsOpen(isOpen);
+              }}
             />
           )}
         </div>

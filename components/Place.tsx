@@ -12,6 +12,8 @@ interface PlacesProps {
   setMpg: (mpg: number) => void;
   gasType: string;
   setGasType: (gasType: string) => void;
+  isOpen: Boolean;
+  setIsOpen: (isOpen: Boolean) => void;
 }
 
 const Places = ({
@@ -23,12 +25,13 @@ const Places = ({
   setMpg,
   gasType,
   setGasType,
+  isOpen,
+  setIsOpen,
 }: PlacesProps) => {
   const [startAutocomplete, setStartAutocomplete] =
     useState<google.maps.places.Autocomplete>();
   const [endAutocomplete, setEndAutocomplete] =
     useState<google.maps.places.Autocomplete>();
-  const [isOpen, setIsOpen] = useState<Boolean>(false);
 
   const handleTravelModeChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -67,15 +70,17 @@ const Places = ({
   };
 
   return (
-    <div className="relative mt-5">
+    <div
+      className={`relative mt-5 ${isOpen ? "min-h-[15vh]" : "min-h-[60vh]"}`}
+    >
       <div
-        className="flex flex-row justify-between items-center py-2 px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 mx-auto border-y-[1px] border-slate-500 text-white text-2xl font-semibold "
+        className="flex flex-row justify-between items-center py-2 px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 mx-auto border-y-[1px] border-slate-500 text-white text-2xl font-semibold z-[1]"
         onClick={() => setIsOpen(!isOpen)}
       >
         <p>Configure Location</p>
         <Image
           src="/dropdown.png"
-          className={isOpen ? "rotate-180 transition-all" : "transition-all"}
+          className={isOpen ? "transition-all" : "rotate-180 transition-all"}
           alt="carbon emission image"
           width="50"
           height="50"
