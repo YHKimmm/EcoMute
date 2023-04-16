@@ -105,7 +105,7 @@ const Places = ({
             <input
               type="text"
               placeholder="Enter Starting Point"
-              className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
+              className="md:w-full md:px-4 placeholder-opacity-50 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
             />
           </Autocomplete>
         </div>
@@ -122,7 +122,7 @@ const Places = ({
             <input
               type="text"
               placeholder="Enter Destination"
-              className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
+              className="md:w-full md:px-4 placeholder-opacity-50  py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
             />
           </Autocomplete>
         </div>
@@ -139,7 +139,7 @@ const Places = ({
             id="travel-mode-select"
             value={travelMode}
             onChange={handleTravelModeChange}
-            className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
+            className="w-full h-12 text-opacity-50 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
           >
             <option className="bg-white" value="DRIVING">
               Driving
@@ -161,7 +161,7 @@ const Places = ({
                   Miles per Gallon
                 </label>
                 <input
-                  className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
+                  className="w-full text-opacity-50 h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
                   type="number"
                   value={mpg}
                   onChange={(e) => {
