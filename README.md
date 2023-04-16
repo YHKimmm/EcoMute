@@ -1,4 +1,4 @@
-# Eco-Mute
+# EcoMute
 
 Eco-Mute is a web app that calculates estimated carbon dioxide emissions for daily commutes based on various factors, including distance, transportation mode, and fuel type. Our data is sourced from reputable organizations and databases, such as the United States Environmental Protection Agency and the International Energy Agency. However, please note that these values are estimates and may not be entirely accurate for your specific situation.
 
@@ -12,8 +12,8 @@ Eco-Mute is a web app that calculates estimated carbon dioxide emissions for dai
 
 To use Eco-Mute, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/eco-mute.git`
-2. Navigate to the project directory: `cd eco-mute`
+1. Clone the repository: `git clone https://github.com/YHKimmm/EcoMute.git`
+2. Navigate to the project directory: `cd ecomute`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm run dev`
 5. Open your preferred web browser and go to `http://localhost:3000/`
