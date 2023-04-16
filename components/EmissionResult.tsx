@@ -84,12 +84,23 @@ const EmissionResult = ({ travelMode, emission, leg }: ResultProps) => {
           published by the Globe Program Scientists&apos; Blog.
         </>
       );
-    default:
+    case "TRANSIT":
       return (
         <>
-          <h1>asdf</h1>
+          Factoring in Bus and Rail transit CO2 emissions may produce inacurrate
+          values, This{" "}
+          <a
+            className="hover:underline font-semibold"
+            href="https://www.cbo.gov/publication/58861"
+          >
+            article
+          </a>{" "}
+          published by the Congressional Budget Office of the U.S.A. provides
+          more details into average Carbon Dioxide emissions per Passenger-Mile.
         </>
       );
+    default:
+      return <></>;
   }
 };
 
