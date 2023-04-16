@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { decode } from "@googlemaps/polyline-codec";
-
 import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
-
 import Places from "./Place";
 import Distance from "./Distance";
+import Link from "next/link";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 // useful types which belong to google.maps
 type LatLngLiteral = google.maps.LatLngLiteral;
@@ -107,6 +107,8 @@ const Map = () => {
   const options = useMemo<MapOptions>(
     () => ({
       mapId: "a8b1b9e035f2bb8b",
+      disableDefaultUI: true,
+      zoomControl: true,
     }),
     []
   );
@@ -115,9 +117,16 @@ const Map = () => {
 
   return (
     <>
-      <div className="flex min-h-screen">
+      <div className="flex h-full">
         {/* Place section including input box */}
         <div className="w-[40%] md:w-2/5 bg-slate-800">
+          {/* Go back home page */}
+          <div className="flex p-5 items-center h-16 mt-3 text-white">
+            <Link href="/">
+              <BsFillArrowLeftCircleFill fontSize={30} />
+            </Link>
+          </div>
+          {/* Places */}
           <Places
             startPlace={startPlace}
             setStartPlace={(position) => {

@@ -1,4 +1,3 @@
-import carbon_emission from "../public/images/carbon-emission.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,7 +24,7 @@ export default function Main() {
           </Link>
           <Link
             className="inline-flex items-center py-3 font-semibold tracking-tighter text-white transition duration-500 ease-in-out transform bg-transparent ml-11 bg-gradient-to-r from-blue-500 to-blue-800 px-14 text-md md:mt-0 focus:shadow-outline"
-            href="/"
+            href="/news"
           >
             <div className="flex text-lg">
               <span className="justify-center">How to Help</span>
@@ -124,14 +123,10 @@ export default function Main() {
             src="/checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
-            Lorem ipsum dolor sit amet
+          Reduce water usage
           </h3>
           <p className="pt-2 value-text text-md text-gray-200 fkrr1">
-            Fusce pharetra ligula mauris, quis faucibus lectus elementum vel.
-            Nullam vehicula, libero at euismod tristique, neque ligula faucibus
-            urna, quis ultricies massa enim in nunc. Vivamus ultricies, quam ut
-            rutrum blandit, turpis massa ornare velit, in sodales tellus ex nec
-            odio.
+          Conserving water can help reduce carbon emissions by reducing the energy required to treat and transport water.
           </p>
         </div>
         <div className="ktq4">
@@ -143,14 +138,10 @@ export default function Main() {
             src="/checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
-            Lorem ipsum dolor sit amet
+          Use energy-efficient appliances
           </h3>
           <p className="pt-2 value-text text-md text-gray-200 fkrr1">
-            Fusce pharetra ligula mauris, quis faucibus lectus elementum vel.
-            Nullam vehicula, libero at euismod tristique, neque ligula faucibus
-            urna, quis ultricies massa enim in nunc. Vivamus ultricies, quam ut
-            rutrum blandit, turpis massa ornare velit, in sodales tellus ex nec
-            odio.
+          Switching to energy-efficient appliances and light bulbs can significantly reduce your energy consumption and carbon emissions.
           </p>
         </div>
       </div>

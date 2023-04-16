@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface DistanceProps {
   leg: google.maps.DirectionsLeg;
@@ -6,13 +6,13 @@ interface DistanceProps {
 }
 
 const Distance = ({ leg, travelMode }: DistanceProps) => {
-  console.log("leg", leg);
+  // console.log("leg", leg);
   return (
     <div className="p-3 md:p-5 tracking-widest">
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
         Distance
       </h1>
-      <p className="text-gray-100 text-base break-words">
+      <p className="text-gray-100 text-base break-words mb-5">
         {leg.start_address} to {leg.end_address}
         <p className="my-1"></p>
         <br />
@@ -22,6 +22,9 @@ const Distance = ({ leg, travelMode }: DistanceProps) => {
         <span className="font-bold text-red-400">{leg.duration?.text}</span>{" "}
         each way.
       </p>
+      <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
+        Carbon Emissions
+      </h1>
     </div>
   );
 };
