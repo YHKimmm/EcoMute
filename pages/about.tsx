@@ -96,7 +96,7 @@ const About = () => {
               alt="Background Image"
               className="absolute inset-0 h-full w-full object-cover z-0"
             />
-           <div className="max-w-lg py-6 px-4 mb-[15rem] bg-gray-900 opacity-[.90] rounded-lg shadow-md text-left mx-auto relative z-10">
+            <div className="max-w-lg py-6 px-4 mb-[15rem] bg-gray-900 opacity-[.90] rounded-lg shadow-md text-left mx-auto relative z-10">
               <h3 className="pt-3 font-semibold text-lg text-green-500">
                 How Are Emission Values Calculated?
               </h3>
