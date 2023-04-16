@@ -54,7 +54,7 @@ export default function Header() {
             <div className="relative">
               <button
                 type="button"
-                className="group rounded-md text-gray-300 inline-flex items-center text-base font-medium focus:outline-none pb-8'"
+                className="group rounded-md text-gray-300 inline-flex items-center text-base font-medium hover:text-white font-semibold focus:outline-none pb-8'"
               >
                 <a className="" href="/climate">
                   Your Emissions
@@ -67,6 +67,16 @@ export default function Header() {
             >
               About
             </Link>
+            <div className="relative">
+              <button
+                type="button"
+                className="group rounded-md text-gray-300 inline-flex items-center text-base font-medium hover:text-white font-semibold focus:outline-none pb-8'"
+              >
+                <a className="" href="/news">
+                  Learn To Help
+                </a>
+              </button>
+            </div>
             {/* <a className="mr-5 cursor-pointer text-gray-300 hover:text-white font-semibold ">
               IDK IF WE HAVE ANOTHER
             </a> */}
