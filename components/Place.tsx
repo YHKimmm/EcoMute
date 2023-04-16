@@ -23,6 +23,7 @@ const Places = ({
     useState<google.maps.places.Autocomplete>();
   const [endAutocomplete, setEndAutocomplete] =
     useState<google.maps.places.Autocomplete>();
+  const [mpg, setMpg] = useState<string>("22");
 
   // const [travelMode, setTravelMode] = useState<
   //   "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT"
@@ -98,10 +99,10 @@ const Places = ({
       </div>
 
       {/* Add select element for travel mode */}
-      <div className="mt-5">
+      <div>
         <label
           htmlFor="travel-mode-select"
-          className="text-sm md:text-2xl font-bold text-slate-100"
+          className="block my-5 text-sm md:text-2xl font-bold text-slate-100"
         >
           Travel Mode:
         </label>
@@ -109,7 +110,7 @@ const Places = ({
           id="travel-mode-select"
           value={travelMode}
           onChange={handleTravelModeChange}
-          className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900"
+          className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
         >
           <option className="bg-slate-900" value="DRIVING">
             Driving
@@ -124,6 +125,23 @@ const Places = ({
             Transit
           </option>
         </select>
+        {travelMode === "DRIVING" ? (
+          <>
+            <label className="block my-5 text-sm md:text-2xl font-bold text-slate-100">
+              Miles per Gallon
+            </label>
+            <input
+              className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
+              type="number"
+              value={mpg}
+              onChange={(e) => {
+                setMpg(e.target.value);
+              }}
+            />
+          </>
+        ) : (
+          <></>
+        )}
       </div>
 
       {/* {!startPlace && (
