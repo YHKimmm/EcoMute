@@ -51,25 +51,28 @@ export default function Header() {
             >
               Home
             </Link>
-
-            <Link
-              className="mr-11 pr-2 cursor-pointer text-gray-300 hover:text-white font-semibold "
-              href={"/climate"}
-            >
-              Your Emissions
-            </Link>
+            <div className="relative">
+              <Link
+                href="/climate"
+                className="group rounded-md text-gray-300 inline-flex items-center text-base hover:text-white font-semibold focus:outline-none pb-8'"
+              >
+                Your Emissions
+              </Link>
+            </div>
             <Link
               className="mr-12 md:ml-11 ml-0 cursor-pointer text-gray-300 hover:text-white font-semibold "
               href="/about"
             >
               About
             </Link>
-            <Link
-              className="mr-12 md:ml-11 ml-0 cursor-pointer text-gray-300 hover:text-white font-semibold "
-              href="/news"
-            >
-              Learn To Help
-            </Link>
+            <div className="relative">
+              <Link
+                href="/news"
+                className="group rounded-md text-gray-300 inline-flex items-center text-base  hover:text-white font-semibold focus:outline-none pb-8'"
+              >
+                Learn To Help
+              </Link>
+            </div>
           </div>
           <Link
             data-v-54e46119=""
