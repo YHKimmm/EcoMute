@@ -24,6 +24,8 @@ const calculateEmission = (mpg: number, gasType: string, distance: number) => {
       return {
         c02GramsPerMile: c02PerMile,
         c02GramsTotal: c02PerMile * distance,
+        c02BikeTotal: distance * 32,
+        c02WalkingTotal: distance * 17,
         gasType: "Gasoline",
       };
     case "diesel":
@@ -31,6 +33,8 @@ const calculateEmission = (mpg: number, gasType: string, distance: number) => {
       return {
         c02GramsPerMile: c02PerMile,
         c02GramsTotal: c02PerMile * distance,
+        c02BikeTotal: distance * 32,
+        c02WalkingTotal: distance * 17,
         gasType: "Diesel",
       };
     default:

@@ -71,7 +71,9 @@ const Places = ({
 
   return (
     <div
-      className={`relative mt-5 ${isOpen ? "min-h-[15vh]" : "min-h-[60vh]"}`}
+      className={`relative mt-5 ${
+        isOpen ? "min-h-[15vh]" : "min-h-[65vh] sm:min-h-[70vh]"
+      }`}
     >
       <div
         className="flex flex-row justify-between items-center py-2 px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 mx-auto border-y-[1px] border-slate-500 text-white text-2xl font-semibold z-[1]"
@@ -89,7 +91,7 @@ const Places = ({
       <div
         className={
           isOpen
-            ? "flex flex-col px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 absolute left-1/2 translate-x-[-50%] -top-[500px] opacity-0 transition-all ease-in-out"
+            ? "flex flex-col px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 absolute left-1/2 translate-x-[-50%] -top-[550px] transition-all ease-in-out"
             : "flex flex-col px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 absolute left-1/2 translate-x-[-50%] top-[5rem] ease-in-out transition-all"
         }
       >
@@ -105,7 +107,7 @@ const Places = ({
             <input
               type="text"
               placeholder="Enter Starting Point"
-              className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
+              className="md:w-full md:px-4 placeholder-opacity-50 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
             />
           </Autocomplete>
         </div>
@@ -122,7 +124,7 @@ const Places = ({
             <input
               type="text"
               placeholder="Enter Destination"
-              className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
+              className="md:w-full md:px-4 placeholder-opacity-50  py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
             />
           </Autocomplete>
         </div>
@@ -139,7 +141,7 @@ const Places = ({
             id="travel-mode-select"
             value={travelMode}
             onChange={handleTravelModeChange}
-            className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
+            className="w-full h-12 text-opacity-50 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
           >
             <option className="bg-white" value="DRIVING">
               Driving
