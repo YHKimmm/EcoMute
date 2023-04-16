@@ -3,31 +3,26 @@ import { Autocomplete } from "@react-google-maps/api";
 import { BiSearch } from "react-icons/bi";
 
 interface PlacesProps {
-  startPlace: google.maps.LatLngLiteral | undefined;
   setStartPlace: (place: google.maps.LatLngLiteral) => void;
-  endPlace: google.maps.LatLngLiteral | undefined;
   setEndPlace: (place: google.maps.LatLngLiteral) => void;
   travelMode: google.maps.TravelMode;
   setTravelMode: (mode: google.maps.TravelMode) => void;
+  mpg: number;
+  setMpg: (mpg: number) => void;
 }
 
 const Places = ({
-  startPlace,
   setStartPlace,
-  endPlace,
   setEndPlace,
   travelMode,
   setTravelMode,
+  mpg,
+  setMpg,
 }: PlacesProps) => {
   const [startAutocomplete, setStartAutocomplete] =
     useState<google.maps.places.Autocomplete>();
   const [endAutocomplete, setEndAutocomplete] =
     useState<google.maps.places.Autocomplete>();
-  const [mpg, setMpg] = useState<string>("22");
-
-  // const [travelMode, setTravelMode] = useState<
-  //   "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT"
-  // >("DRIVING");
 
   const handleTravelModeChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -134,26 +129,13 @@ const Places = ({
               className="md:w-full h-12 md:px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
               type="number"
               value={mpg}
-              onChange={(e) => {
-                setMpg(e.target.value);
-              }}
+              onChange={(e) => setMpg(Number(e.target.value))}
             />
           </>
         ) : (
           <></>
         )}
       </div>
-
-      {/* {!startPlace && (
-        <p className="text-xs md:text-base text-slate-100 mt-5">
-          Please enter a starting point to get started.
-        </p>
-      )}
-      {!endPlace && (
-      <p className="text-xs md:text-base text-slate-100 mt-5">
-      Please enter a destination to get started.
-      </p>
-      )} */}
     </div>
   );
 };
