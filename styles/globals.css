@@ -16,8 +16,8 @@ body {
 }
 
 .map-container {
+  height: 100%;
   width: 100%;
-  min-height: 100vh;
 }
 
 @import url(//db.onlinewebfonts.com/c/e5c490a944bc2b2746f0c851501e46c7?family=AvenirNextW10-Bold);

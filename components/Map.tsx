@@ -20,7 +20,7 @@ const Map = () => {
     "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT"
   >("DRIVING");
   const [mpg, setMpg] = useState<number>(0);
-  const [gasType, setGasType] = useState<string>("gasonline");
+  const [gasType, setGasType] = useState<string>("gasoline");
 
   console.log("place", startPlace, endPlace);
 
@@ -74,15 +74,60 @@ const Map = () => {
 
   return (
     <>
-      <div className="flex h-full">
+      <div className="flex flex-col h-full bg-slate-800">
+        {/* Go back home page */}
+        <div className="flex p-5 items-center h-16 text-white">
+          <Link href="/">
+            <BsFillArrowLeftCircleFill fontSize={30} />
+          </Link>
+        </div>
+        {/* Google Map */}
+
+        <div className="h-[32rem] w-full md:w-3/4 mx-auto">
+          <GoogleMap
+            zoom={10}
+            center={center}
+            mapContainerClassName="map-container"
+            options={options}
+            onLoad={onLoad}
+          >
+            {/* Marker */}
+            {startPlace && (
+              <Marker
+                position={startPlace}
+                icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+                title="Starting Point"
+                onClick={() => {
+                  console.log("clicked");
+                }}
+              />
+            )}
+            {/* Marker */}
+            {endPlace && (
+              <Marker
+                position={endPlace}
+                icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+                title="Destination"
+              />
+            )}
+            {/* Route Line */}
+            {directions && (
+              <DirectionsRenderer
+                directions={directions}
+                options={{
+                  polylineOptions: {
+                    strokeColor: "#1976D2",
+                    zIndex: 50,
+                    strokeWeight: 5,
+                  },
+                }}
+              />
+            )}
+          </GoogleMap>
+        </div>
+
         {/* Place section including input box */}
-        <div className="w-[40%] md:w-2/5 bg-gray-900">
-          {/* Go back home page */}
-          <div className="flex p-5 items-center h-16 mt-3 text-white">
-            <Link href="/">
-              <BsFillArrowLeftCircleFill fontSize={30} />
-            </Link>
-          </div>
+        <div>
           {/* Places */}
           <Places
             setStartPlace={(position) => {
@@ -115,47 +160,6 @@ const Map = () => {
             />
           )}
         </div>
-        {/* Google Map */}
-        <GoogleMap
-          zoom={10}
-          center={center}
-          mapContainerClassName="map-container"
-          options={options}
-          onLoad={onLoad}
-        >
-          {/* Marker */}
-          {startPlace && (
-            <Marker
-              position={startPlace}
-              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-              title="Starting Point"
-              onClick={() => {
-                console.log("clicked");
-              }}
-            />
-          )}
-          {/* Marker */}
-          {endPlace && (
-            <Marker
-              position={endPlace}
-              icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-              title="Destination"
-            />
-          )}
-          {/* Route Line */}
-          {directions && (
-            <DirectionsRenderer
-              directions={directions}
-              options={{
-                polylineOptions: {
-                  strokeColor: "#1976D2",
-                  zIndex: 50,
-                  strokeWeight: 5,
-                },
-              }}
-            />
-          )}
-        </GoogleMap>
       </div>
     </>
   );
