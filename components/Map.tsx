@@ -83,7 +83,7 @@ const Map = () => {
         </div>
         {/* Google Map */}
 
-        <div className="h-[32rem] w-full md:w-3/4 mx-auto">
+        <div className="h-[40rem] w-full md:w-3/4 mx-auto">
           <GoogleMap
             zoom={10}
             center={center}
