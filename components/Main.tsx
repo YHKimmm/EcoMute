@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import styles from '../styles/Home.module.css'
@@ -28,7 +29,7 @@ export default function Main() {
             href="/news"
           >
             <div className="flex text-lg">
-              <span className="justify-center">How to Help</span>
+              <span className="justify-center">Learn To Help</span>
             </div>
           </Link>
         </div>
@@ -57,7 +58,7 @@ export default function Main() {
             height="50"
             className="w-10"
             alt="checkmark"
-            src="/checkmark.png"
+            src="/blue_checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
             Use Public Transportation
@@ -73,7 +74,7 @@ export default function Main() {
             height="50"
             className="w-10"
             alt="checkmark"
-            src="/checkmark.png"
+            src="/another_checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">Carpool</h3>
           <p className="pt-2 value-text text-md text-gray-200 fkrr1">
@@ -87,7 +88,7 @@ export default function Main() {
             height="50"
             className="w-10"
             alt="checkmark"
-            src="/checkmark.png"
+            src="/another_checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
             Use Electric or Hybrid Vehicles
@@ -103,7 +104,7 @@ export default function Main() {
             height="50"
             className="w-10"
             alt="checkmark"
-            src="/checkmark.png"
+            src="/blue_checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
             Bike or Walk
@@ -121,7 +122,7 @@ export default function Main() {
             height="50"
             className="w-10"
             alt="checkmark"
-            src="/checkmark.png"
+            src="/another_checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
           Reduce water usage
@@ -136,7 +137,7 @@ export default function Main() {
             height="50"
             className="w-10"
             alt="checkmark"
-            src="/checkmark.png"
+            src="/blue_checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
           Use energy-efficient appliances
