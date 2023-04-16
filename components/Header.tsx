@@ -1,18 +1,19 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Header() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-
 
   return (
     <header className="fixed top-0 w-full clearNav z-50">
       <div className="max-w-5xl mx-auto flex flex-wrap p-5 flex-col md:flex-row">
         <div className="flex flex-row items-center justify-between p-3 md:p-1">
-          <a
+          <Link
             href="/"
             className="flex text-3xl text-white font-medium mb-4 md:mb-0"
-          >ECOMUTE
-          </a>
+          >
+            ECOMUTE
+          </Link>
           <button
             className="text-white pb-4 cursor-pointer leading-none px-3 py-1 md:hidden outline-none focus:outline-none content-end ml-auto"
             type="button"
@@ -44,26 +45,33 @@ export default function Header() {
           }
         >
           <div className="md:ml-auto md:mr-auto font-4 pt-1 md:pl-14 pl-1 flex flex-wrap items-center md:text-base text-1xl md:justify-center justify-items-start">
-            <a className="mr-11 pr-2 cursor-pointer text-gray-300 hover:text-white font-semibold " href="/">
+            <Link
+              className="mr-11 pr-2 cursor-pointer text-gray-300 hover:text-white font-semibold "
+              href="/"
+            >
               Home
-            </a>
+            </Link>
             <div className="relative">
               <button
                 type="button"
                 className="group rounded-md text-gray-300 inline-flex items-center text-base font-medium focus:outline-none pb-8'"
               >
-                <a className="" href="/climate">Your Emissions</a>
-                
+                <a className="" href="/climate">
+                  Your Emissions
+                </a>
               </button>
             </div>
-            <a className="mr-12 md:ml-11 ml-0 cursor-pointer text-gray-300 hover:text-white font-semibold " href="/about">
+            <Link
+              className="mr-12 md:ml-11 ml-0 cursor-pointer text-gray-300 hover:text-white font-semibold "
+              href="/about"
+            >
               About
-            </a>
-            <a className="mr-5 cursor-pointer text-gray-300 hover:text-white font-semibold ">
+            </Link>
+            {/* <a className="mr-5 cursor-pointer text-gray-300 hover:text-white font-semibold ">
               IDK IF WE HAVE ANOTHER
-            </a>
+            </a> */}
           </div>
-          <a
+          <Link
             href="https://twitter.com/"
             rel="noopener noreferrer"
             target="_blank"
@@ -82,8 +90,8 @@ export default function Header() {
                 fill="white"
               ></path>
             </svg>
-          </a>
-          <a
+          </Link>
+          <Link
             data-v-54e46119=""
             href="https://github.com/"
             rel="noopener noreferrer"
@@ -107,7 +115,7 @@ export default function Header() {
                 fill="white"
               ></path>
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </header>
