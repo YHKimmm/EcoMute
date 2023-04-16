@@ -19,9 +19,9 @@ const Distance = ({
   isOpen,
   setIsOpen,
 }: DistanceProps) => {
-  console.log("leg", leg);
+  // console.log("leg", leg);
   const [emission, setEmission] = useState<Emission | undefined>();
-  console.log({ emission, mpg, gasType });
+  // console.log({ emission, mpg, gasType });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,11 +40,11 @@ const Distance = ({
         }),
       });
 
-      console.log("response", response);
+      // console.log("response", response);
 
       if (response.ok) {
         const data = await response.json();
-        console.log("data from distance", data);
+        // console.log("data from distance", data);
         setEmission(data.emission);
       } else {
         console.error("Error fetching emission data:", response.statusText);

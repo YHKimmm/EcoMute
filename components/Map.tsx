@@ -23,7 +23,7 @@ const Map = () => {
   const [gasType, setGasType] = useState<string>("gasoline");
   const [isOpen, setIsOpen] = useState<Boolean>(true);
 
-  console.log("place", startPlace, endPlace);
+  // console.log("place", startPlace, endPlace);
 
   // get current location of user
   useEffect(() => {
@@ -50,7 +50,7 @@ const Map = () => {
         (response, status) => {
           if (status === "OK" && response) {
             setDirections(response);
-            console.log("directions", directions);
+            // console.log("directions", directions);
           } else {
             console.error(`Directions request failed due to ${status}`);
           }
@@ -75,7 +75,7 @@ const Map = () => {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen pt-[80px] bg-slate-800">
+      <div className="flex flex-col min-h-screen pt-[120px] md:pt-[80px] bg-slate-800">
         {/* Go back home page */}
         <div className="flex p-5 items-center h-16 text-white">
           <Link href="/">
@@ -99,7 +99,7 @@ const Map = () => {
                 icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
                 title="Starting Point"
                 onClick={() => {
-                  console.log("clicked");
+                  // console.log("clicked");
                 }}
               />
             )}
