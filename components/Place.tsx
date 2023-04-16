@@ -19,7 +19,6 @@ const Places = ({
   travelMode,
   setTravelMode,
 }: PlacesProps) => {
-
   const [startAutocomplete, setStartAutocomplete] =
     useState<google.maps.places.Autocomplete>();
   const [endAutocomplete, setEndAutocomplete] =
@@ -34,7 +33,11 @@ const Places = ({
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setTravelMode(
-      event.target.value as "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT" as google.maps.TravelMode
+      event.target.value as
+        | "DRIVING"
+        | "WALKING"
+        | "BICYCLING"
+        | "TRANSIT" as google.maps.TravelMode
     );
   };
 
@@ -63,7 +66,7 @@ const Places = ({
   };
 
   return (
-    <div className="flex flex-col h-full p-3 md:p-5 mt-5">
+    <div className="flex flex-col p-3 md:p-5">
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
         Starting Point
       </h1>

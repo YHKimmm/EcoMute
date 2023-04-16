@@ -1,8 +1,19 @@
-// Home page
+import Head from "next/head";
+import Header from "../components/Header";
+import Main from "../components/Main";
+import Footer from "../components/Footer";
+
+
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Home</h1>
+    <div className="text-black bg-black">
+      <Head>
+        <title>EcoMute</title>
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 }
