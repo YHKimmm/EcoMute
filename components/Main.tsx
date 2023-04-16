@@ -1,22 +1,21 @@
-
 import Image from "next/image";
 import Link from "next/link";
-import styles from '../styles/Home.module.css'
+import styles from "../styles/Home.module.css";
 import Newsletter from "./Newsletter";
 
 export default function Main() {
   return (
     <section className="text-gray-600 body-font">
-      <div className="max-w-5xl pt-52 pb-24 mx-auto">
-      <h1 className='text-80 text-center font-4 lh-6 ld-04 font-bold text-white mb-6' >
-        ECOMUTE
-      </h1>
+      <div className="max-w-4xl pt-52 pb-24 mx-auto">
+        <h1 className="text-5xl text-center font-4 lh-6 ld-04 font-bold text-white mb-6">
+          ECOMUTE
+        </h1>
         <h2 className="text-2xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-400 text-center">
           Do you know how much you are contributing to the environment?
           <br />
           Find out with EcoMute.
         </h2>
-        <div className="ml-6 text-center">
+        <div className="text-center">
           <Link
             className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-transparent bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline"
             href="/climate"
@@ -26,7 +25,7 @@ export default function Main() {
             </div>
           </Link>
           <Link
-            className="inline-flex items-center py-3 font-semibold tracking-tighter text-white transition duration-500 ease-in-out transform bg-transparent ml-11 bg-gradient-to-r from-blue-500 to-blue-800 px-14 text-md md:mt-0 focus:shadow-outline"
+            className="inline-flex items-center py-3 font-semibold tracking-tighter text-white transition duration-500 ease-in-out transform bg-transparent mt-3 md:ml-11 bg-gradient-to-r from-blue-500 to-blue-800 px-14 text-md md:mt-0 focus:shadow-outline"
             href="/news"
           >
             <div className="flex text-lg">
@@ -126,10 +125,11 @@ export default function Main() {
             src="/another_checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
-          Reduce water usage
+            Reduce water usage
           </h3>
           <p className="pt-2 value-text text-md text-gray-200 fkrr1">
-          Conserving water can help reduce carbon emissions by reducing the energy required to treat and transport water.
+            Conserving water can help reduce carbon emissions by reducing the
+            energy required to treat and transport water.
           </p>
         </div>
         <div className="ktq4">
@@ -141,10 +141,11 @@ export default function Main() {
             src="/blue_checkmark.png"
           />
           <h3 className="pt-3 font-semibold text-lg text-white">
-          Use energy-efficient appliances
+            Use energy-efficient appliances
           </h3>
           <p className="pt-2 value-text text-md text-gray-200 fkrr1">
-          Switching to energy-efficient appliances and light bulbs can significantly reduce your energy consumption and carbon emissions.
+            Switching to energy-efficient appliances and light bulbs can
+            significantly reduce your energy consumption and carbon emissions.
           </p>
         </div>
       </div>
