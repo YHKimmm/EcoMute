@@ -117,7 +117,16 @@ const Map = () => {
                 directions={directions}
                 options={{
                   polylineOptions: {
-                    strokeColor: "#1976D2",
+                    strokeColor:
+                      travelMode === "DRIVING"
+                        ? "#FF0000"
+                        : travelMode === "WALKING"
+                        ? "#00FF00"
+                        : travelMode === "BICYCLING"
+                        ? "#0000FF"
+                        : travelMode === "TRANSIT"
+                        ? "#FFFF00"
+                        : "",
                     zIndex: 50,
                     strokeWeight: 5,
                   },

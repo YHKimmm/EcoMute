@@ -72,6 +72,13 @@ const Distance = ({
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
         Carbon Emissions
       </h1>
+      {mpg === 0 && travelMode === "DRIVING" && (
+        <div className="text-gray-100 text-base break-words mb-5">
+          <span className="font-bold text-red-400">Note:</span> Your MPG is set
+          to 0. This means that you are not using a vehicle for this trip. If
+          you are using a vehicle, please change your MPG in the form above.
+        </div>
+      )}
       {emission ? (
         <div className="text-gray-100 text-base break-words mb-5">
           <EmissionResult
