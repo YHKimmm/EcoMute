@@ -70,7 +70,7 @@ const Places = ({
   };
 
   return (
-    <div className="relative mt-5">
+    <div className="relative mt-5 h-[50vh]">
       <div
         className="flex flex-row justify-between items-center py-2 px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 mx-auto border-y-[1px] border-slate-500 text-white text-2xl font-semibold z-[1]"
         onClick={() => setIsOpen(!isOpen)}

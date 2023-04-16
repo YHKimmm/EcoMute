@@ -54,7 +54,7 @@ const Distance = ({
       className={
         isOpen
           ? "transition-all ease-in-out px-3 md:px-5 tracking-widest"
-          : "transition-all ease-in-out mt-[30rem] px-3 md:px-5 tracking-widest"
+          : "transition-all ease-in-out mt-[20rem] px-3 md:px-5 tracking-widest"
       }
     >
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
