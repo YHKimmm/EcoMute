@@ -1,19 +1,10 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { decode } from "@googlemaps/polyline-codec";
 
-import {
-  GoogleMap,
-  Marker,
-  DirectionsRenderer,
-  Circle,
-  MarkerClusterer,
-  DirectionsService,
-  Polyline,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 
 import Places from "./Place";
 import Distance from "./Distance";
-// import { generatePlaces } from "@/utilities/generatePlaces";
 
 // useful types which belong to google.maps
 type LatLngLiteral = google.maps.LatLngLiteral;
@@ -32,10 +23,6 @@ const Map = () => {
   >("DRIVING");
 
   console.log("place", startPlace, endPlace);
-
-  // const generatedPlaces = useMemo(() => {
-  //   return generatePlaces(place);
-  // }, [place]);
 
   // get current location of user
   useEffect(() => {
@@ -111,6 +98,7 @@ const Map = () => {
         }
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [travelMode, startPlace, endPlace]);
 
   const center = useMemo(() => currentLocation, [currentLocation]);
@@ -121,52 +109,6 @@ const Map = () => {
     }),
     []
   );
-
-  const getDirections = (
-    startPlace: LatLngLiteral,
-    endPlace: LatLngLiteral,
-    travelMode: google.maps.TravelMode
-  ): Promise<DirectionsResult> => {
-    return new Promise((resolve, reject) => {
-      const directionsService = new google.maps.DirectionsService();
-      directionsService.route(
-        {
-          origin: startPlace,
-          destination: endPlace,
-          travelMode,
-        },
-        (response, status) => {
-          if (status === "OK") {
-            const decodedPolyline = decode(
-              response?.routes[0].overview_polyline!
-            );
-            const mappedRouteline = decodedPolyline.map((coord) => ({
-              lat: coord[0],
-              lng: coord[1],
-            }));
-            setRouteLine(mappedRouteline);
-
-            resolve(response as DirectionsResult);
-          } else {
-            reject(`Directions request failed due to ${status}`);
-          }
-        }
-      );
-    });
-  };
-
-  const drawPolyLine = (routeLine: LatLngLiteral[]) => {
-    return (
-      <Polyline
-        path={routeLine}
-        options={{
-          strokeColor: "#FF0000",
-          strokeOpacity: 1.0,
-          strokeWeight: 2,
-        }}
-      />
-    );
-  };
 
   const onLoad = useCallback((map: any) => (mapRef.current = map), []);
 
@@ -225,13 +167,7 @@ const Map = () => {
               title="Destination"
             />
           )}
-          ;{/* Directions */}
-          {/* {startPlace && endPlace  && (
-          getDirections(startPlace, endPlace, travelMode as google.maps.TravelMode)
-        )};
-        {routeLine && (
-          drawPolyLine(routeLine)
-        )}; */}
+          {/* Route Line */}
           {directions && (
             <DirectionsRenderer
               directions={directions}
