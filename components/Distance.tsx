@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Emission } from "@/types/emission";
+import { isEnumMember } from "typescript";
 interface DistanceProps {
   leg: google.maps.DirectionsLeg;
   travelMode: "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT";
@@ -18,11 +19,14 @@ const Distance = ({
   setIsOpen,
 }: DistanceProps) => {
   console.log("leg", leg);
-  const [emission, setEmission] = useState<Emission>();
+  const [emission, setEmission] = useState<Emission | undefined>();
   console.log({ emission, mpg, gasType });
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!leg.distance?.value) {
+        setEmission(undefined);
+      }
       const response = await fetch("/api/greenhouse", {
         method: "POST",
         headers: {
@@ -54,7 +58,7 @@ const Distance = ({
       className={
         isOpen
           ? "transition-all ease-in-out px-3 md:px-5 tracking-widest"
-          : "transition-all ease-in-out mt-[20rem] px-3 md:px-5 tracking-widest"
+          : "transition-all ease-in-out mt-[35rem] px-3 md:px-5 tracking-widest"
       }
     >
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
