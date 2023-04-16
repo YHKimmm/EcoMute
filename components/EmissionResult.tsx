@@ -85,11 +85,7 @@ const EmissionResult = ({ travelMode, emission, leg }: ResultProps) => {
         </>
       );
     default:
-      return (
-        <>
-          <h1>asdf</h1>
-        </>
-      );
+      return <></>;
   }
 };
 
