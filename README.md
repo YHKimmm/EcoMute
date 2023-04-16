@@ -26,6 +26,7 @@ Eco-Mute was built using the following technologies:
 - Next.Js for the front-end
 - Google Maps API for calculating distance and geolocation data
 - Data from reputable sources such as the United States Environmental Protection Agency and the International Energy Agency
+- SendGrid API
 
 
 ## License
