@@ -5,9 +5,18 @@ interface DistanceProps {
   travelMode: "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT";
   mpg: number;
   gasType: string;
+  isOpen: Boolean;
+  setIsOpen: (isOpen: Boolean) => void;
 }
 
-const Distance = ({ leg, travelMode, mpg, gasType }: DistanceProps) => {
+const Distance = ({
+  leg,
+  travelMode,
+  mpg,
+  gasType,
+  isOpen,
+  setIsOpen,
+}: DistanceProps) => {
   console.log("leg", leg);
   const [emission, setEmission] = useState<Emission>();
   console.log({ emission, mpg, gasType });
@@ -41,7 +50,13 @@ const Distance = ({ leg, travelMode, mpg, gasType }: DistanceProps) => {
   }, [gasType, leg.distance?.value, mpg]);
 
   return (
-    <div className="p-3 md:p-5 tracking-widest">
+    <div
+      className={
+        isOpen
+          ? "transition-all ease-in-out px-3 md:px-5 tracking-widest"
+          : "transition-all ease-in-out mt-[30rem] px-3 md:px-5 tracking-widest"
+      }
+    >
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
         Distance
       </h1>
