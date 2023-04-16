@@ -101,7 +101,7 @@ const Places = ({
       <div>
         <label
           htmlFor="travel-mode-select"
-          className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-slate-100"
+          className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white"
         >
           Travel Mode:
         </label>
@@ -109,7 +109,7 @@ const Places = ({
           id="travel-mode-select"
           value={travelMode}
           onChange={handleTravelModeChange}
-          className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
+          className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
         >
           <option className="bg-white" value="DRIVING">
             Driving
@@ -127,11 +127,11 @@ const Places = ({
         {travelMode === "DRIVING" ? (
           <div className="flex flex-col md:flex-row">
             <div className="basis-1/2 md:mr-1">
-              <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-slate-100">
+              <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white">
                 Miles per Gallon
               </label>
               <input
-                className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
+                className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
                 type="number"
                 value={mpg}
                 onChange={(e) => {
@@ -140,7 +140,7 @@ const Places = ({
               />
             </div>
             <div className="basis-1/2 md:ml-1">
-              <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-slate-100">
+              <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white">
                 Gas Type
               </label>
               <select
@@ -148,12 +148,12 @@ const Places = ({
                 onChange={(e) => {
                   setGasType(e.target.value);
                 }}
-                className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
+                className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
               >
-                <option className="bg-slate-900" value="gasoline">
+                <option className="bg-white" value="gasoline">
                   Gasoline
                 </option>
-                <option className="bg-slate-900" value="diesel">
+                <option className="bg-white" value="diesel">
                   Diesel
                 </option>
               </select>
