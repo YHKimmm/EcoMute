@@ -17,21 +17,21 @@ export default function Main() {
         </h2>
         <div className="text-center">
           <Link
-            className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-transparent bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline"
+            className="inline-flex shadow-xl items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-transparent bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline"
             href="/climate"
           >
             <div className="flex text-lg">
               <span className="justify-center">See Your Emissions</span>
             </div>
           </Link>
-          <Link
+          {/* <Link
             className="inline-flex items-center py-3 font-semibold tracking-tighter text-white transition duration-500 ease-in-out transform bg-transparent mt-3 md:ml-11 bg-gradient-to-r from-blue-500 to-blue-800 px-14 text-md md:mt-0 focus:shadow-outline"
             href="/news"
           >
             <div className="flex text-lg">
               <span className="justify-center">Learn To Help</span>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div className="container flex flex-col items-center justify-center mx-auto">
