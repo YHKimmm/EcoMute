@@ -19,7 +19,7 @@ const About = () => {
                 {/* Your browser does not support HTML5 video. */}
               </video>
             </div>
-            <p className="mx-auto text-xl text-center text-gray-300 font-normal leading-relaxed lg:w-2/3">
+            <p className="mx-auto text-xl text-center p-14 text-gray-300 font-normal leading-relaxed lg:w-2/3">
               EcoMute is an application designed to help individuals visualize
               and reduce their carbon footprint. Our goal is to provide the
               necessary tools and resources to make a positive impact on the
