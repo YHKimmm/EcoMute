@@ -87,7 +87,7 @@ const Places = ({
       <div
         className={
           isOpen
-            ? "flex flex-col px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 absolute left-1/2 translate-x-[-50%] -top-[500px] opacity-0 transition-all ease-in-out"
+            ? "flex flex-col px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 absolute left-1/2 translate-x-[-50%] -top-[550px] transition-all ease-in-out"
             : "flex flex-col px-3 md:px-5 w-full sm:w-3/5 lg:w-1/2 absolute left-1/2 translate-x-[-50%] top-[5rem] ease-in-out transition-all"
         }
       >
@@ -153,40 +153,46 @@ const Places = ({
             </option>
           </select>
           {travelMode === "DRIVING" ? (
-            <div className="flex flex-col md:flex-row">
-              <div className="basis-1/2 md:mr-1">
-                <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white">
-                  Miles per Gallon
-                </label>
-                <input
-                  className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
-                  type="number"
-                  value={mpg}
-                  onChange={(e) => {
-                    setMpg(Number(e.target.value));
-                  }}
-                />
+            <>
+              <p className="mt-5 text-white">
+                Most gasoline vehicles in the U.S.A. have an average of 22 miles
+                per gallon{" "}
+              </p>
+              <div className="flex flex-col md:flex-row">
+                <div className="basis-1/2 md:mr-1">
+                  <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white">
+                    Miles per Gallon
+                  </label>
+                  <input
+                    className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
+                    type="number"
+                    value={mpg}
+                    onChange={(e) => {
+                      setMpg(Number(e.target.value));
+                    }}
+                  />
+                </div>
+                <div className="basis-1/2 md:ml-1">
+                  <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white">
+                    Gas Type
+                  </label>
+                  <select
+                    value={gasType}
+                    onChange={(e) => {
+                      setGasType(e.target.value);
+                    }}
+                    className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
+                  >
+                    <option className="bg-white" value="gasoline">
+                      Gasoline
+                    </option>
+                    <option className="bg-white" value="diesel">
+                      Diesel
+                    </option>
+                  </select>
+                </div>
               </div>
-              <div className="basis-1/2 md:ml-1">
-                <label className="block my-2 md:my-5 text-sm md:text-2xl font-bold text-white">
-                  Gas Type
-                </label>
-                <select
-                  value={gasType}
-                  onChange={(e) => {
-                    setGasType(e.target.value);
-                  }}
-                  className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-black placeholder-black bg-white rounded-md"
-                >
-                  <option className="bg-white" value="gasoline">
-                    Gasoline
-                  </option>
-                  <option className="bg-white" value="diesel">
-                    Diesel
-                  </option>
-                </select>
-              </div>
-            </div>
+            </>
           ) : (
             <></>
           )}
