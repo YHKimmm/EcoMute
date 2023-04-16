@@ -65,14 +65,6 @@ export default function Header() {
             >
               About
             </Link>
-            <div className="relative">
-              <Link
-                href="/news"
-                className="group rounded-md text-gray-300 inline-flex items-center text-base  hover:text-white font-semibold focus:outline-none pb-8'"
-              >
-                Learn To Help
-              </Link>
-            </div>
           </div>
           <Link
             data-v-54e46119=""
