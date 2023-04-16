@@ -29,7 +29,7 @@ const Distance = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          distance: leg.distance?.value,
+          distance: leg.distance?.value! * 0.000621371, // convert meters into miles
           mpg: mpg,
           gasType: gasType,
         }),
@@ -75,8 +75,25 @@ const Distance = ({
       </h1>
       {emission ? (
         <div className="text-gray-100 text-base break-words mb-5">
-          Your CO2 grams total is {emission.c02GramsTotal} for{" "}
-          {leg.distance?.text}.
+          Your total CO2 emission is{" "}
+          <span className="font-bold text-red-400">
+            {Math.ceil(emission.c02GramsTotal)}
+          </span>{" "}
+          grams or{" "}
+          <span className="font-bold text-red-400">
+            {(emission.c02GramsTotal / 1000).toFixed(3)} kg
+          </span>{" "}
+          for{" "}
+          <span className="font-bold text-red-400">{leg.distance?.text}</span>.
+          <br /> <br />
+          We based our calculations on a{" "}
+          <a
+            className="hover:underline font-semibold"
+            href="https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100U8YT.pdf"
+          >
+            paper
+          </a>{" "}
+          published by the United States Environmental Protection Agency.
         </div>
       ) : (
         <div className="text-gray-100 text-base break-words mb-5">

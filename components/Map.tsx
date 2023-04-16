@@ -13,8 +13,14 @@ type MapOptions = google.maps.MapOptions;
 const Map = () => {
   const mapRef = useRef<GoogleMap>();
   const [currentLocation, setCurrentLocation] = useState<LatLngLiteral>();
-  const [startPlace, setStartPlace] = useState<LatLngLiteral>();
-  const [endPlace, setEndPlace] = useState<LatLngLiteral>();
+  const [startPlace, setStartPlace] = useState<LatLngLiteral>({
+    lat: 49.2,
+    lng: -123.1,
+  });
+  const [endPlace, setEndPlace] = useState<LatLngLiteral>({
+    lat: 47.6,
+    lng: -122.3,
+  });
   const [directions, setDirections] = useState<DirectionsResult>();
   const [travelMode, setTravelMode] = useState<
     "DRIVING" | "WALKING" | "BICYCLING" | "TRANSIT"
