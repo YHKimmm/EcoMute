@@ -115,7 +115,7 @@ export default function Main() {
           </p>
         </div>
       </div>
-      <div className="pt-32 pb-32 max-w-6xl mx-auto fsac4 md:px-1 px-3">
+      <div className="pb-32 max-w-6xl mx-auto fsac4 md:px-1 px-3">
         <div className="ktq4">
           <Image
             width="50"

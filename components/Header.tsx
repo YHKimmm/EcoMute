@@ -77,9 +77,6 @@ export default function Header() {
                 </a>
               </button>
             </div>
-            {/* <a className="mr-5 cursor-pointer text-gray-300 hover:text-white font-semibold ">
-              IDK IF WE HAVE ANOTHER
-            </a> */}
           </div>
           <Link
             data-v-54e46119=""
