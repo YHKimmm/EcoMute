@@ -8,7 +8,7 @@ const About = () => {
   return (
     <>
       <Layout>
-        <section className="text-gray-600 body-font">
+        <section className="text-gray-600 body-font ">
           <div className="max-w-5xl pt-5 pb-5 mx-auto">
             <h1 className="text-80 text-center font-4 lh-6 ld-04 font-bold text-white mb-6">
               About Us
