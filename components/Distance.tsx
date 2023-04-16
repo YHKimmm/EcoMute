@@ -12,7 +12,7 @@ const Distance = ({ leg, travelMode }: DistanceProps) => {
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-5">
         Distance
       </h1>
-      <p className="text-gray-100 text-base break-words">
+      <div className="text-gray-100 text-base break-words">
         {leg.start_address} to {leg.end_address}
         <p className="my-1"></p>
         <br />
@@ -21,7 +21,7 @@ const Distance = ({ leg, travelMode }: DistanceProps) => {
         from your starting location to your destination. That would take{" "}
         <span className="font-bold text-red-400">{leg.duration?.text}</span>{" "}
         each way.
-      </p>
+      </div>
     </div>
   );
 };
