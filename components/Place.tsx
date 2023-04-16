@@ -69,8 +69,8 @@ const Places = ({
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 mb-2 md:mb-5">
         Starting Point
       </h1>
-      <div className="flex items-center w-full h-12 px-4 bg-slate-900 rounded-md">
-        <BiSearch className="text-sm md:text-xl text-slate-300" />
+      <div className="flex items-center w-full h-12 px-4 bg-white text-black rounded-md">
+        <BiSearch className="text-sm md:text-xl text-black" />
         <Autocomplete
           onLoad={onStartLoad}
           onPlaceChanged={handleStartPlaceSelect}
@@ -78,7 +78,7 @@ const Places = ({
           <input
             type="text"
             placeholder="Enter Starting Point"
-            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-slate-100 placeholder-slate-300"
+            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
           />
         </Autocomplete>
       </div>
@@ -86,13 +86,13 @@ const Places = ({
       <h1 className="text-sm md:text-2xl font-bold text-slate-100 my-2 md:my-5">
         Destination
       </h1>
-      <div className="flex items-center w-full h-12 px-4 bg-slate-900 rounded-md">
-        <BiSearch className="text-sm md:text-xl text-slate-300" />
+      <div className="flex items-center w-full h-12 px-4 bg-white rounded-md">
+        <BiSearch className="text-sm md:text-xl text-black" />
         <Autocomplete onLoad={onEndLoad} onPlaceChanged={handleEndPlaceSelect}>
           <input
             type="text"
             placeholder="Enter Destination"
-            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-slate-100 placeholder-slate-300"
+            className="md:w-full md:px-4 py-2 md:ml-2 text-xs md:text-base bg-transparent border-none outline-none text-black placeholder-black"
           />
         </Autocomplete>
       </div>
@@ -111,16 +111,16 @@ const Places = ({
           onChange={handleTravelModeChange}
           className="w-full h-12 px-4 py-2 text-xs md:text-base border-none outline-none text-slate-100 placeholder-slate-300 bg-slate-900 rounded-md"
         >
-          <option className="bg-slate-900" value="DRIVING">
+          <option className="bg-white" value="DRIVING">
             Driving
           </option>
-          <option className="bg-slate-900" value="WALKING">
+          <option className="bg-white" value="WALKING">
             Walking
           </option>
-          <option className="bg-slate-900" value="BICYCLING">
+          <option className="bg-white" value="BICYCLING">
             Bicycling
           </option>
-          <option className="bg-slate-900" value="TRANSIT">
+          <option className="bg-white" value="TRANSIT">
             Transit
           </option>
         </select>

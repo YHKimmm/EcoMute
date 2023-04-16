@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout";
 import { useState, useEffect } from "react";
 
 
+
 type Article = {
   title: string;
   description: string;
@@ -40,8 +41,9 @@ export default function News() {
                 <div className="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden">
                   <img
                     src={article.urlToImage}
-                    alt=""
+                    alt="News Image "
                     className="object-cover pointer-events-none group-hover:opacity-75"
+                    
                   />
                 </div>
                 <h2 className="mt-4 text-base font-medium text-white">
