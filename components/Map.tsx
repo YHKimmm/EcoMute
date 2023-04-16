@@ -75,7 +75,7 @@ const Map = () => {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen bg-slate-800">
+      <div className="flex flex-col min-h-screen pt-[80px] bg-slate-800">
         {/* Go back home page */}
         <div className="flex p-5 items-center h-16 text-white">
           <Link href="/">

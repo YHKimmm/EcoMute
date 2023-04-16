@@ -2,6 +2,7 @@
 import React from "react";
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "@/components/Map";
+import Layout from "@/components/layout/Layout";
 
 type googleMapsApiKey = string;
 
@@ -16,7 +17,11 @@ const Climate = () => {
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
-  return <Map />;
+  return (
+    <Layout>
+      <Map />
+    </Layout>
+  );
 };
 
 export default Climate;
