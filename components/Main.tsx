@@ -1,4 +1,3 @@
-import carbon_emission from "../public/images/carbon-emission.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 
