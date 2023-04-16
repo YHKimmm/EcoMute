@@ -52,14 +52,12 @@ export default function Header() {
               Home
             </Link>
             <div className="relative">
-              <button
-                type="button"
+              <Link
+                href="/climate"
                 className="group rounded-md text-gray-300 inline-flex items-center text-base hover:text-white font-semibold focus:outline-none pb-8'"
               >
-                <a className="" href="/climate">
-                  Your Emissions
-                </a>
-              </button>
+                Your Emissions
+              </Link>
             </div>
             <Link
               className="mr-12 md:ml-11 ml-0 cursor-pointer text-gray-300 hover:text-white font-semibold "
@@ -68,14 +66,12 @@ export default function Header() {
               About
             </Link>
             <div className="relative">
-              <button
-                type="button"
+              <Link
+                href="/news"
                 className="group rounded-md text-gray-300 inline-flex items-center text-base font-medium hover:text-white font-semibold focus:outline-none pb-8'"
               >
-                <a className="" href="/news">
-                  Learn To Help
-                </a>
-              </button>
+                Learn To Help
+              </Link>
             </div>
           </div>
           <Link
