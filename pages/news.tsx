@@ -1,6 +1,7 @@
 // import the Layout component and hooks from React
 import Layout from "@/components/layout/Layout";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // define the shape of the article object returned by the News API
 type Article = {
@@ -28,20 +29,21 @@ export default function News() {
       // parse the JSON response
       const data = await response.json();
       // log the data to the console for debugging
-      console.log(data)
+      console.log(data);
       // update the state with the array of articles returned by the API
       setArticles(data.articles);
     }
 
     // call the fetchNews function
     fetchNews();
-    
   }, []);
+
+  console.log(articles);
 
   // render the component
   return (
     // use the Layout component to provide a consistent page layout
-    <Layout >
+    <Layout>
       <div className="bg-gray-900 py-16">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
@@ -53,11 +55,21 @@ export default function News() {
               <a key={index} href={article.url} className="group block">
                 {/* display the image for the article */}
                 <div className="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden">
-                  <img
-                    src={article.urlToImage}
-                    alt="News Image "
-                    className="object-cover pointer-events-none group-hover:opacity-75"
-                  />
+                  {article.urlToImage ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={article.urlToImage}
+                      alt=""
+                      className="object-cover pointer-events-none group-hover:opacity-75"
+                    />
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src="/no-placeholder.jpg"
+                      alt=""
+                      className="object-cover pointer-events-none group-hover:opacity-75"
+                    />
+                  )}
                 </div>
                 {/* display the title and description for the article */}
                 <h2 className="mt-4 text-base font-medium text-white">
