@@ -40,7 +40,7 @@ export default function Header() {
         </div>
         <div
           className={
-            "md:flex flex-grow items-center" +
+            "md:flex flex-grow items-center pl-4" +
             (navbarOpen ? " flex" : " hidden")
           }
         >
@@ -54,7 +54,7 @@ export default function Header() {
             <div className="relative">
               <button
                 type="button"
-                className="group rounded-md text-gray-300 inline-flex items-center text-base font-medium hover:text-white font-semibold focus:outline-none pb-8'"
+                className="group rounded-md text-gray-300 inline-flex items-center text-base hover:text-white font-semibold focus:outline-none pb-8'"
               >
                 <a className="" href="/climate">
                   Your Emissions
