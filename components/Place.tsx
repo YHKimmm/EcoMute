@@ -72,7 +72,13 @@ const Places = ({
   return (
     <div
       className={`relative mt-5 ${
-        isOpen ? "min-h-[15vh]" : "min-h-[65vh] sm:min-h-[70vh]"
+        isOpen
+          ? `min-h-[75px]`
+          : `min-h-[520px]  ${
+              travelMode === "DRIVING"
+                ? "sm:min-h-[560px] transition-all ease-in-out"
+                : "min-h-[340px] sm:min-h-[440px]  transition-all ease-in-out"
+            }`
       }`}
     >
       <div
