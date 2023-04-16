@@ -53,10 +53,10 @@ const Map = () => {
           origin: startPlace,
           destination: endPlace,
           travelMode: travelMode as google.maps.TravelMode,
+
         },
         (response, status) => {
           if (status === "OK") {
-            console.log("Should be empty",routeLine)
             setDirections(response!);
             console.log("response", directions);
             const decodedPolyline = decode(response?.routes[0].overview_polyline!);
