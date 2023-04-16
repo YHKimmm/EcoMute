@@ -24,9 +24,11 @@ export default async function handler(
     to: email,
     from: fromEmail,
     subject: "Thanks for subscribing to EcoMute!",
-    text: "Thanks for subscribing to our newsletter!. This Project was a part of the Hackathon conducted by DevPost for the MEGA Hackathon 2023 and was created by Brayden Kim, Scott Croin, Mason Porter and Renz Gabrinao",
-    html: "<p>Thanks for subscribing to our newsletter!. This Project was a part of the Hackathon conducted by DevPost for the MEGA Hackathon 2023 and was created by Brayden Kim, Scott Croin, Mason Porter and Renz Gabrinao</p>",
+    text: "Thanks for subscribing to our newsletter! This Project was a part of the Hackathon conducted by DevPost for the MEGA Hackathon 2023 and was created by Brayden Kim, Scott Croin, Mason Porter and Renz Gabrinao",
+    html: `<p>Thanks for subscribing to our newsletter! This Project was a part of the Hackathon conducted by DevPost for the MEGA Hackathon 2023 and was created by <br />Brayden Kim (braydenkim98@gmail.com), Scott Croin (), Mason Porter (masonrwporter@gmail.com) and Renz Gabrinao (rgabrinao1@gmail.com
+        )</p>`,
   };
+  
   try {
     await sgMail.send(msg);
     res.status(200).json({ success: true, message: "Email sent successfully!" });
