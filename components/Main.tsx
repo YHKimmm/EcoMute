@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from '../styles/Home.module.css'
 import Newsletter from "./Newsletter";
+
 export default function Main() {
   return (
     <section className="text-gray-600 body-font">
