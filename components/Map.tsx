@@ -74,7 +74,7 @@ const Map = () => {
 
   return (
     <>
-      <div className="flex flex-col h-full bg-slate-800">
+      <div className="flex flex-col h-screen bg-slate-800">
         {/* Go back home page */}
         <div className="flex p-5 items-center h-16 text-white">
           <Link href="/">
@@ -83,7 +83,7 @@ const Map = () => {
         </div>
         {/* Google Map */}
 
-        <div className="h-[40rem] w-full md:w-3/4 mx-auto">
+        <div className="h-[40rem] w-full md:w-3/4 mx-auto z-20">
           <GoogleMap
             zoom={10}
             center={center}
